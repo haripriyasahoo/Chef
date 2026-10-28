@@ -40,7 +40,7 @@ html[lang="or"] .logo{font-family:var(--serif)}
 @media print{.language-switch{display:none}}
 </style>
 </head>
-<body>
+<body data-build="five-starters-visible-2026-10-28">
 <header class="site-head"><div class="wrap bar"><a href="#/" class="logo" aria-label="Chef's Table homepage">chef's <em>table.</em><span class="logo-small" id="brand-tagline">A shared cookbook</span></a><div class="language-switch" role="group" aria-label="Choose site language"><button id="language-en" type="button" class="lang-btn" data-lang="en" aria-pressed="true">English</button><button id="language-or" type="button" class="lang-btn" data-lang="or" aria-pressed="false" lang="or">ଓଡ଼ିଆ</button></div><nav class="nav-actions" id="top-nav"></nav></div></header>
 <div class="modebar" id="mode-bar"></div><main id="app" class="wrap"></main>
 <footer class="footer"><div class="wrap footer-flex"><a href="#/" class="logo">chef's <em>table.</em></a><p id="footer-tagline">Collected recipes. Shared stories. Good food.</p><p id="footer-mode">Recipe collection</p></div></footer>
@@ -99,8 +99,8 @@ const TEXTS = {
     "footerMode": "Recipe collection",
     "sharedCollection": "The shared recipe collection",
     "heroFirst": "Good Food,",
-    "heroBetter": "Good",
-    "heroTogether": "Life.",
+    "heroBetter": "Good Life",
+    "heroTogether": "Eat Good",
     "heroCopy": "One kitchen notebook, three passionate cooks. Explore familiar favorites, discover something new, and keep every recipe in one beautiful place.",
     "collected": "Recipes collected",
     "cooks": "Contributing cooks",
@@ -548,7 +548,8 @@ const safeUrl=u=>{try{const x=new URL(String(u),location.href);return ['https:',
 const imageTag=(r,extra='')=>r.image_url&&safeUrl(r.image_url)?`<img loading="lazy" src="${escapeHTML(safeUrl(r.image_url))}" alt="${escapeHTML(r.title)}" ${extra}>`:'';
 const clock=r=>Math.max(0,Number(r.prep_minutes)||0)+Math.max(0,Number(r.cook_minutes)||0);
 const mode=CONNECTED?'live':'demo';
-let db=null,auth=null,fb=null,user=null,contributor=null,recipes=[],searchTerm='';
+// Show the five bundled recipes immediately. A Firebase connection only adds shared recipes.
+let db=null,auth=null,fb=null,user=null,contributor=null,recipes=mergeLiveRecipes([]),searchTerm='';
 let activeDemo=sessionStorage.getItem('chefs-table-preview-user')||'';
 let toastTimer;
 function notify(message){const t=$('#toast');t.textContent=message;t.style.display='block';clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.style.display='none',4200)}
@@ -558,8 +559,10 @@ function demoLoad(){
   try {
     const val=JSON.parse(localStorage.getItem('chefs-table-recipes-v1'));
     if(Array.isArray(val)) {
-      // Upgrade older previews that had six untouched sample recipes. Preserve any user-added recipes.
-      return val.filter(r=>!(r.id==='garden' && r.title==='Fresh Market Harvest Plate' && r.author_id==='chef-c' && !r.created_at && !r.updated_at));
+      // Keep user edits, discard the old sixth example, and restore any missing starter recipes.
+      const saved=val.filter(r=>!(r.id==='garden' && r.title==='Fresh Market Harvest Plate' && r.author_id==='chef-c' && !r.created_at && !r.updated_at));
+      const existingIds=new Set(saved.map(r=>String(r.id)));
+      return [...saved,...SAMPLE.filter(r=>!existingIds.has(String(r.id))).map(r=>({...r}))];
     }
   }catch{}
   return SAMPLE.map(x=>({...x}));
@@ -575,8 +578,10 @@ function demoSave(){try{localStorage.setItem('chefs-table-recipes-v1',JSON.strin
 async function refreshRecipes(){if(!CONNECTED){recipes=demoLoad();return;}const snapshot=await fb.getDocs(fb.collection(db,'recipes'));recipes=mergeLiveRecipes(snapshot.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>String(b.created_at||'').localeCompare(String(a.created_at||''))))}
 function refreshContributor(){const email=(user?.email||'').toLowerCase();contributor=(user&&user.emailVerified&&APPROVED_EMAILS.map(e=>e.toLowerCase()).includes(email))?{display_name:user.displayName||email.split('@')[0]}:null;}
 async function init(){
- if(!CONNECTED){recipes=demoLoad();render();return;}
- $('#app').innerHTML='<div class="page"><p>Connecting to the shared cookbook…</p></div>';
+ // Never hide built-in recipes while waiting for Firebase, or if Firestore is empty/offline.
+ recipes=CONNECTED?mergeLiveRecipes([]):demoLoad();
+ render();
+ if(!CONNECTED)return;
  try{
   const [appMod,authMod,storeMod]=await Promise.all([
    import(`https://www.gstatic.com/firebasejs/${FIREBASE_VERSION}/firebase-app.js`),
@@ -585,9 +590,9 @@ async function init(){
   ]);
   fb={...authMod,...storeMod};const app=appMod.initializeApp(firebaseConfig);
   auth=fb.getAuth(app);db=fb.getFirestore(app);
-  fb.onAuthStateChanged(auth, u=>{user=u;refreshContributor();render()});
-  fb.onSnapshot(fb.collection(db,'recipes'),snap=>{recipes=mergeLiveRecipes(snap.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>String(b.created_at||'').localeCompare(String(a.created_at||''))));const route=location.hash.split('/')[1]||'';if(!['add','edit'].includes(route))render();else renderNav();},err=>notify('Unable to load recipes: '+err.message));
- }catch(error){$('#app').innerHTML='<section class="page empty"><h3>Firebase could not connect</h3><p>Check your project configuration and internet connection.</p></section>';console.error(error);}
+  fb.onAuthStateChanged(auth, u=>{user=u;refreshContributor();render()},err=>{console.error(err);notify('Sign-in is temporarily unavailable. The five sample recipes remain readable.')});
+  fb.onSnapshot(fb.collection(db,'recipes'),snap=>{recipes=mergeLiveRecipes(snap.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>String(b.created_at||'').localeCompare(String(a.created_at||''))));const route=location.hash.split('/')[1]||'';if(!['add','edit'].includes(route))render();else renderNav();},err=>{console.error(err);notify('Shared recipes are unavailable. The five starter recipes remain visible.');});
+ }catch(error){console.error(error);notify('Firebase could not connect. The five starter recipes remain visible.');}
 }
 function render(){renderNav();const path=decodeURIComponent(location.hash.replace(/^#\/?/,'')||'');const parts=path.split('/').filter(Boolean);const route=parts[0]||'home';if(route==='recipe')renderRecipe(parts[1]);else if(route==='add')renderForm(null);else if(route==='edit')renderForm(parts[1]);else if(route==='manage')renderManage();else if(route==='dashboard')renderDashboard();else if(route==='sign-in')renderSignIn();else renderHome();$('#footer-mode').textContent=CONNECTED?'Firebase shared collection':'Local preview • This browser only'}
 function renderNav(){
