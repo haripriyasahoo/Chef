@@ -4,7 +4,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#121915"><title>Chef's Table — Our Shared Cookbook</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=Noto+Sans+Oriya:wght@400;500;600;700&display=swap');
 :root{--bg:#121916;--surface:#1b2420;--surface2:#242e28;--line:#374238;--white:#f6f4e9;--muted:#a1aea0;--accent:#d8e8a5;--gold:#f6d2a0;--serif:'DM Serif Display',Georgia,serif;--sans:'DM Sans',Arial,sans-serif}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--white);font:14px/1.65 var(--sans);min-width:320px}button,input,select,textarea{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}img{display:block;max-width:100%}h1,h2,h3,p{margin-top:0}button:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:3px}.wrap{max-width:1220px;padding:0 32px;margin:auto}
 .site-head{background:#121916ed;position:sticky;top:0;z-index:20;border-bottom:1px solid #ffffff15;backdrop-filter:blur(12px)}.bar{min-height:82px;display:flex;align-items:center;justify-content:space-between;gap:22px}.logo{font-family:var(--serif);font-size:32px;line-height:1;letter-spacing:-.5px;white-space:nowrap}.logo em{color:var(--accent);font-style:normal}.logo-small{font:700 9px var(--sans);text-transform:uppercase;letter-spacing:2.2px;color:var(--muted);margin-left:14px;vertical-align:middle}.nav-actions{display:flex;align-items:center;gap:18px}.nav-text{font-size:12px;color:#c7d1c2}.nav-text:hover,.accent-text{color:var(--accent)}.btn{display:inline-flex;gap:9px;align-items:center;justify-content:center;border:1px solid #64705b;background:none;color:var(--white);border-radius:100px;padding:11px 20px;font-weight:700;font-size:12px;white-space:nowrap;transition:.15s}.btn:hover{border-color:var(--accent);transform:translateY(-1px)}.btn.primary{background:var(--accent);color:#17221b;border-color:var(--accent)}.btn.light{background:var(--white);color:#17221b;border-color:var(--white)}.btn.ghost{border-color:#4c5a4b;color:#dce4d4}.btn.danger{border-color:#c48783;color:#f2b9b1}.btn.small{padding:7px 13px;font-size:11px}.btn:disabled{opacity:.45;cursor:wait;transform:none}.modebar{background:#213028;border-bottom:1px solid #ffffff12;color:#bfccb9;font-size:11px;padding:9px 0}.modebar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px}.modebar strong{color:var(--accent)}
@@ -20,12 +20,30 @@
 .chef-desk h3{font:normal 30px var(--serif);margin:4px 0 4px}.chef-desk p{color:#afc2ad;font-size:12px;margin:0}.desk-buttons{display:flex;flex-wrap:wrap;gap:12px}.chef-dashboard{padding:65px 0 95px;max-width:900px;margin:auto}.chef-dashboard h1{font:normal clamp(42px,6vw,70px)/1.1 var(--serif);margin:8px 0 18px}.chef-dashboard p{color:#aebbaa}.desk-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:36px}.desk-tile{min-height:210px;border-radius:10px;border:1px solid #56684f;background:#202c24;padding:30px;display:flex;flex-direction:column;gap:9px;transition:.2s}.desk-tile:hover{background:#2d3e30;border-color:var(--accent);transform:translateY(-2px)}.desk-tile strong{font:normal 30px var(--serif)}.desk-tile span{color:#afc1a9;font-size:12px}.desk-icon{font-size:32px;color:var(--accent)}.my-recipe-list{margin-top:28px;display:grid;gap:12px}.my-recipe{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:17px 20px;border:1px solid #40503f;border-radius:8px;background:var(--surface)}.my-recipe strong{font:normal 21px var(--serif)}.my-recipe small{display:block;color:#95aa99;margin-top:2px}.auth-actions{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0}.auth-options{border-top:1px solid #455342;padding-top:23px;margin-top:22px}.auth-options .field{margin-top:15px}.auth-card .btn{font-size:12px}.notice{background:#283325;border:1px solid #647158;border-radius:6px;padding:12px 15px;color:#ddedc1;font-size:12px;margin-top:13px}.notice.warning{background:#3a3024;border-color:#765b38;color:#ffe2b0}
 @media(max-width:700px){.chef-desk{align-items:stretch;flex-direction:column;padding:23px}.desk-grid{grid-template-columns:1fr}.my-recipe{align-items:flex-start;flex-direction:column}.nav-actions{flex-wrap:wrap;justify-content:flex-end;gap:7px}.nav-actions .btn.small{padding:7px 9px}}
 @media print{.chef-desk,.chef-dashboard{display:none!important}}
+/* Bilingual recipe editor fields */
+.translation-fields{margin:28px 0;padding:24px;background:#25312a;border:1px solid #4d6049;border-radius:8px}
+.translation-fields>.section-kicker{margin-bottom:8px}
+.translation-fields .hint{margin-bottom:20px}
+.form-group-title{margin:0 0 24px}
+/* Bilingual header control */
+.language-switch{display:flex;align-items:center;gap:3px;padding:4px;border:1px solid #52644d;background:#1c281f;border-radius:100px;flex-shrink:0}
+.lang-btn{border:0;border-radius:100px;background:transparent;color:#b8c7af;padding:6px 11px;font:700 11px/1.6 var(--sans);white-space:nowrap;transition:background .15s,color .15s}
+.lang-btn[aria-pressed="true"]{background:var(--accent);color:#1b2b1e}
+.lang-btn:hover:not([aria-pressed="true"]){color:#fff}
+html[lang="or"] body{font-family:'Noto Sans Oriya',var(--sans)}
+html[lang="or"] :is(.hero h1,.section-heading,.block-title,.detail-title,.form-heading,.chef-dashboard h1,.auth-card h1,.hero-stamp,.collection-head h3,.card-body h4,.chef-desk h3,.desk-tile strong){font-family:'Noto Sans Oriya',var(--serif);line-height:1.45;letter-spacing:0}
+html[lang="or"] .hero h1{font-size:clamp(37px,5.8vw,65px)}
+html[lang="or"] .overline,html[lang="or"] .section-label,html[lang="or"] .section-kicker,html[lang="or"] .field label{text-transform:none;letter-spacing:.25px}
+html[lang="or"] .logo{font-family:var(--serif)}
+@media(max-width:780px){.site-head .bar{gap:10px;flex-wrap:wrap;padding-top:12px;padding-bottom:12px}.nav-actions{margin-left:auto}.language-switch{order:3;margin-left:auto}.logo-small{display:none}}
+@media(max-width:460px){.nav-actions{width:100%;justify-content:flex-start;order:4}.language-switch{order:3}.logo{font-size:25px}}
+@media print{.language-switch{display:none}}
 </style>
 </head>
 <body>
-<header class="site-head"><div class="wrap bar"><a href="#/" class="logo" aria-label="Chef's Table homepage">chef's <em>table.</em><span class="logo-small">A shared cookbook</span></a><nav class="nav-actions" id="top-nav"></nav></div></header>
+<header class="site-head"><div class="wrap bar"><a href="#/" class="logo" aria-label="Chef's Table homepage">chef's <em>table.</em><span class="logo-small" id="brand-tagline">A shared cookbook</span></a><div class="language-switch" role="group" aria-label="Choose site language"><button id="language-en" type="button" class="lang-btn" data-lang="en" aria-pressed="true">English</button><button id="language-or" type="button" class="lang-btn" data-lang="or" aria-pressed="false" lang="or">ଓଡ଼ିଆ</button></div><nav class="nav-actions" id="top-nav"></nav></div></header>
 <div class="modebar" id="mode-bar"></div><main id="app" class="wrap"></main>
-<footer class="footer"><div class="wrap footer-flex"><a href="#/" class="logo">chef's <em>table.</em></a><p>Collected recipes. Shared stories. Good food.</p><p id="footer-mode">Recipe collection</p></div></footer>
+<footer class="footer"><div class="wrap footer-flex"><a href="#/" class="logo">chef's <em>table.</em></a><p id="footer-tagline">Collected recipes. Shared stories. Good food.</p><p id="footer-mode">Recipe collection</p></div></footer>
 <div id="toast" class="toast" style="display:none" role="status"></div>
 
 <script>
@@ -40,19 +58,481 @@
    With blank settings, this is a browser-only demo.
    =============================================================== */
 const firebaseConfig = {
-  apiKey: "AIzaSyA2YIABFCw_LSF66x0t5qTd-cgvBGeOnw8",
-  authDomain: "chefs-table-5c4e8.firebaseapp.com",
-  projectId: "chefs-table-5c4e8",
-  appId: "1:560299858273:web:2891fb85baf756319a0d20",
+  apiKey: '',
+  authDomain: '',
+  projectId: '',
+  appId: ''
 };
 const APPROVED_EMAILS = [
-  'bishnupriya1.alpha1@gmail.com',
-  'haripriya.beta@gmail.com',
-  'bijaylaxmi.gamma@gmail.com'
+  'chef1@example.com',
+  'chef2@example.com',
+  'chef3@example.com'
 ];
 const CONNECTED = !!(firebaseConfig.apiKey && firebaseConfig.projectId && firebaseConfig.authDomain);
 const FIREBASE_VERSION = '12.19.0';
 
+// Select English for first-time visitors; retain an explicit language choice.
+const LANGUAGE_KEY = 'chefs-table-language-v1';
+let currentLanguage = (()=>{try{return localStorage.getItem(LANGUAGE_KEY)==='or'?'or':'en'}catch{return 'en'}})();
+const TEXTS = {
+  "en": {
+    "allRecipes": "All recipes",
+    "addRecipe": "Add Recipe",
+    "editRecipe": "Edit Recipe",
+    "signIn": "Contributor Sign In",
+    "signOut": "Sign out",
+    "sharedCookbook": "SHARED COOKBOOK",
+    "sharedNotice": "Everyone can read recipes. Only three approved emails can add or edit.",
+    "localPreview": "LOCAL PREVIEW",
+    "localNotice": "Sign in as a demo chef to try Add Recipe and Edit Recipe. Changes stay in this browser.",
+    "signedInAs": "Signed in as",
+    "noMatching": "No matching recipes.",
+    "noFound": "No recipes found",
+    "trySearch": "Try another search, or be the first to add one.",
+    "by": "By",
+    "contributor": "A contributor",
+    "min": "min",
+    "recipe": "recipe",
+    "recipes": "recipes",
+    "brandTagline": "A shared cookbook",
+    "footerTagline": "Collected recipes. Shared stories. Good food.",
+    "footerMode": "Recipe collection",
+    "sharedCollection": "The shared recipe collection",
+    "heroFirst": "Good food.",
+    "heroBetter": "Better",
+    "heroTogether": "together.",
+    "heroCopy": "One kitchen notebook, three passionate cooks. Explore familiar favorites, discover something new, and keep every recipe in one beautiful place.",
+    "collected": "Recipes collected",
+    "cooks": "Contributing cooks",
+    "madeToShare": "Made to share",
+    "stamp": "Recipes worth remembering.",
+    "yourDesk": "Your kitchen desk",
+    "welcomeBack": "Welcome back,",
+    "deskIntro": "Ready to share something delicious or improve your recipes?",
+    "indexLabel": "The recipe index",
+    "allOneTable": "All recipes, one table.",
+    "indexDescription": "Find your dish below. Select any name to see its photograph, ingredients, and step-by-step method.",
+    "searchPlaceholder": "Search recipes or ingredients…",
+    "searchAria": "Search recipes",
+    "directory": "Recipe directory",
+    "fromKitchen": "From our kitchen",
+    "browsePhoto": "Browse by photo ↗",
+    "noDescription": "A recipe from our shared table.",
+    "starterRecipe": "Starter recipe",
+    "starterNote": "This is a built-in example displayed by the website, not a recipe stored in Firebase. Approved chefs can add their own recipes after signing in.",
+    "notFound": "Recipe not found",
+    "backAll": "Back to all recipes",
+    "homeCooking": "Home cooking",
+    "fromToYou": "From our kitchen to yours.",
+    "prep": "Prep",
+    "cook": "Cook",
+    "servings": "Servings",
+    "recipeBy": "Recipe by",
+    "print": "Print recipe",
+    "editYours": "Edit your recipe",
+    "gather": "Gather everything",
+    "ingredients": "Ingredients",
+    "kitchenNote": "Kitchen note:",
+    "checkNote": "Check off each ingredient as you prepare it. Your marks stay on this page while you cook.",
+    "goodPart": "The good part",
+    "howTo": "How to make it",
+    "ready": "ready",
+    "notTranslated": "An Odia version of this recipe has not been added yet. Showing the English recipe text.",
+    "dashboard": "Contributor desk",
+    "signedInKitchen": "Signed-in kitchen",
+    "welcome": "Welcome,",
+    "dashboardCopy": "Choose what you’d like to do. Your changes will appear in the shared cookbook when connected to Firebase.",
+    "addDesc": "Share a new dish with its photo, ingredients and instructions.",
+    "editDesc": "Update any of the recipes you’ve contributed.",
+    "liveNote": "You are signed in with an approved email.",
+    "demoNote": "Demo sign-in only: edits are saved on this browser, not shared online.",
+    "yourContrib": "Your contributions",
+    "editHeading": "Edit a recipe.",
+    "editInstructions": "Select a recipe below to change its ingredients, photo link, or cooking procedure.",
+    "view": "View",
+    "edit": "Edit",
+    "noOwn": "You have not added any recipes yet. Start by creating one.",
+    "backDesk": "Back to kitchen desk",
+    "cantEdit": "You cannot edit this recipe",
+    "onlyOriginal": "Only its original contributor can edit it.",
+    "newRecipe": "New recipe",
+    "improve": "Improve a favorite",
+    "shareDelicious": "Share something delicious",
+    "editYour": "Edit your recipe.",
+    "addTable": "Add to the table.",
+    "editFormCopy": "Make your changes and save.",
+    "addFormCopy": "Fill in your dish once; everyone can discover it.",
+    "publishingAs": "Publishing as",
+    "recipeName": "Recipe name *",
+    "category": "Category",
+    "shortDescription": "Short description",
+    "prepMinutes": "Preparation time (minutes)",
+    "cookMinutes": "Cooking time (minutes)",
+    "ingredientsRequired": "Ingredients *",
+    "ingredientsHint": "One ingredient per line. Quantities and units can go on the same line.",
+    "stepsRequired": "Cooking instructions *",
+    "stepsHint": "One step per line. The page numbers your steps automatically.",
+    "photoDemo": "Food photo (demo)",
+    "photoDemoHint": "Optional: JPG, PNG or WebP, under 750 KB. This photo stays on this browser.",
+    "photoURL": "Food photo URL",
+    "photoHintLive": "Paste a public image URL. Direct image uploads will need Firebase Storage (Blaze plan).",
+    "photoHintDemo": "You can also paste a public photo URL. A demo upload takes priority.",
+    "saveChanges": "Save changes",
+    "publish": "Publish recipe",
+    "cancel": "Cancel",
+    "delete": "Delete recipe",
+    "tryContributor": "Try the contributor view",
+    "welcomeChef": "Welcome, chef.",
+    "previewMessage": "This is a local preview. Choose a demo chef to open the signed-in Add Recipe and Edit Recipe buttons. This does not authenticate a real user.",
+    "signAs": "Sign in as",
+    "liveRestriction": "Live access will be restricted to your three approved email addresses by Firebase Security Rules.",
+    "threeContributors": "Three approved contributors",
+    "accountStatus": "Account status",
+    "signInDesc": "Sign in with one of the three approved email addresses. Readers never need an account.",
+    "signedAs": "Signed in as",
+    "editingUnavailable": "but editing is unavailable.",
+    "verifyInstruction": "Verify your email, then sign out and sign back in.",
+    "notApproved": "This email is not on the three-person contributor list.",
+    "sendVerify": "Send verification email",
+    "googleSignIn": "Sign in with Google",
+    "emailPassword": "Or use email and password",
+    "emailAddress": "Approved email address",
+    "password": "Password",
+    "firebasePassword": "Your Firebase password",
+    "signInButton": "Sign In",
+    "verifySent": "Verification email sent. Check your inbox.",
+    "englishFields": "English recipe information",
+    "odiaFields": "Odia translation (optional)",
+    "odiaHelp": "To show your own recipe in Odia, fill in these fields too. If left blank, the English recipe text is shown.",
+    "titleOdia": "Recipe name in Odia",
+    "descriptionOdia": "Description in Odia",
+    "ingredientsOdia": "Ingredients in Odia",
+    "stepsOdia": "Cooking steps in Odia",
+    "odiaLineHint": "Enter one item per line, matching the English list.",
+    "saved": "Recipe updated!",
+    "published": "Recipe published!",
+    "deleted": "Recipe deleted",
+    "saving": "Saving your recipe…",
+    "deleteConfirm": "Delete this recipe? This cannot be undone.",
+    "errorRecipeName": "Please enter a recipe name.",
+    "errorItemRequired": "Add at least one ingredient and one step.",
+    "errorTooMany": "Please keep to 100 ingredients and 60 steps at most.",
+    "errorPhoto": "Photo link must begin with https:// or http://.",
+    "errorSave": "Unable to save recipe",
+    "errorStorage": "Unable to save locally — browser storage full.",
+    "placeholderTitle": "Grandma’s weekend curry",
+    "placeholderDesc": "What makes this dish special?",
+    "placeholderIng": "2 tbsp olive oil\n1 onion, diced\n200 g tomatoes",
+    "placeholderSteps": "Heat oil in a pan.\nAdd onions and cook until soft.\nStir in tomatoes and simmer.",
+    "statusCopy": "English is the default language. You can switch at any time.",
+    "photoAlt": "Fresh, beautifully plated food"
+  },
+  "or": {
+    "allRecipes": "ସମସ୍ତ ରେସିପି",
+    "addRecipe": "ନୂଆ ରେସିପି ଯୋଡ଼ନ୍ତୁ",
+    "editRecipe": "ରେସିପି ସମ୍ପାଦନା",
+    "signIn": "ରୋଷେୟା ଲଗଇନ୍",
+    "signOut": "ଲଗଆଉଟ୍",
+    "sharedCookbook": "ସମସ୍ତଙ୍କ ରନ୍ଧନ ପୁସ୍ତକ",
+    "sharedNotice": "ସମସ୍ତେ ରେସିପି ପଢ଼ିପାରିବେ। କେବଳ ତିନିଜଣ ଅନୁମୋଦିତ ବ୍ୟକ୍ତି ଯୋଡ଼ି ବା ସମ୍ପାଦନା କରିପାରିବେ।",
+    "localPreview": "ଡେମୋ ପୂର୍ବଦର୍ଶନ",
+    "localNotice": "ରେସିପି ଯୋଡ଼ିବା ଓ ସମ୍ପାଦନା ଦେଖିବାକୁ ଡେମୋ ରୋଷେୟା ଭାବେ ଲଗଇନ୍ କରନ୍ତୁ। ପରିବର୍ତ୍ତନ ଏହି ବ୍ରାଉଜରରେ ରହିବ।",
+    "signedInAs": "ଲଗଇନ୍ କରିଛନ୍ତି",
+    "noMatching": "ମେଳ ଖାଉଥିବା କୌଣସି ରେସିପି ନାହିଁ।",
+    "noFound": "କୌଣସି ରେସିପି ମିଳିଲା ନାହିଁ",
+    "trySearch": "ଅନ୍ୟ କିଛି ଖୋଜନ୍ତୁ କିମ୍ବା ପ୍ରଥମ ରେସିପି ଯୋଡ଼ନ୍ତୁ।",
+    "by": "ପ୍ରସ୍ତୁତ କରିଛନ୍ତି",
+    "contributor": "ଜଣେ ରୋଷେୟା",
+    "min": "ମିନିଟ୍",
+    "recipe": "ରେସିପି",
+    "recipes": "ରେସିପି",
+    "brandTagline": "ସମସ୍ତଙ୍କ ରନ୍ଧନ ପୁସ୍ତକ",
+    "footerTagline": "ସଂଗୃହୀତ ରେସିପି। ମିଳିତ କାହାଣୀ। ସ୍ୱାଦିଷ୍ଟ ଖାଦ୍ୟ।",
+    "footerMode": "ରେସିପି ସଂଗ୍ରହ",
+    "sharedCollection": "ସମସ୍ତଙ୍କ ରେସିପି ସଂଗ୍ରହ",
+    "heroFirst": "ଭଲ ଖାଦ୍ୟ।",
+    "heroBetter": "ଆହୁରି ଭଲ",
+    "heroTogether": "ଏକାଠି।",
+    "heroCopy": "ଗୋଟିଏ ରନ୍ଧନ ଖାତା, ତିନିଜଣ ଉତ୍ସାହୀ ରୋଷେୟା। ପ୍ରିୟ ଖାଦ୍ୟ ଖୋଜନ୍ତୁ, ନୂଆ ସ୍ୱାଦ ଆବିଷ୍କାର କରନ୍ତୁ ଓ ସବୁ ରେସିପି ଗୋଟିଏ ଜାଗାରେ ରଖନ୍ତୁ।",
+    "collected": "ସଂଗୃହୀତ ରେସିପି",
+    "cooks": "ଅଂଶୀଦାର ରୋଷେୟା",
+    "madeToShare": "ସମସ୍ତଙ୍କ ପାଇଁ",
+    "stamp": "ମନେ ରଖିବା ଭଳି ରେସିପି।",
+    "yourDesk": "ଆପଣଙ୍କ ରନ୍ଧନ ଡେସ୍କ",
+    "welcomeBack": "ପୁଣି ସ୍ୱାଗତ,",
+    "deskIntro": "ନୂଆ ସ୍ୱାଦ ବାଣ୍ଟିବେ କି ନିଜ ରେସିପି ସୁଧାରିବେ?",
+    "indexLabel": "ରେସିପି ତାଲିକା",
+    "allOneTable": "ସବୁ ରେସିପି, ଗୋଟିଏ ଜାଗାରେ।",
+    "indexDescription": "ତଳୁ ନିଜ ପସନ୍ଦର ଖାଦ୍ୟ ବାଛନ୍ତୁ। ନାମରେ କ୍ଲିକ୍ କଲେ ଫଟୋ, ସାମଗ୍ରୀ ଓ ପ୍ରସ୍ତୁତି ପ୍ରଣାଳୀ ଦେଖିପାରିବେ।",
+    "searchPlaceholder": "ରେସିପି କିମ୍ବା ସାମଗ୍ରୀ ଖୋଜନ୍ତୁ…",
+    "searchAria": "ରେସିପି ଖୋଜନ୍ତୁ",
+    "directory": "ରେସିପି ସୂଚୀ",
+    "fromKitchen": "ଆମ ରନ୍ଧନଶାଳାରୁ",
+    "browsePhoto": "ଫଟୋ ଦେଖି ବାଛନ୍ତୁ ↗",
+    "noDescription": "ଆମ ସମସ୍ତଙ୍କ ରନ୍ଧନ ଘରର ଏକ ରେସିପି।",
+    "starterRecipe": "ନମୁନା ରେସିପି",
+    "starterNote": "ଏହା ୱେବସାଇଟ୍‌ରେ ଥିବା ଏକ ନମୁନା ରେସିପି, Firebase ରେ ସେଭ୍ ହୋଇନାହିଁ। ଅନୁମୋଦିତ ରୋଷେୟାମାନେ ଲଗଇନ୍ କରି ନିଜର ରେସିପି ଯୋଡ଼ିପାରିବେ।",
+    "notFound": "ରେସିପି ମିଳିଲା ନାହିଁ",
+    "backAll": "ସମସ୍ତ ରେସିପିକୁ ଫେରନ୍ତୁ",
+    "homeCooking": "ଘରୋଇ ରନ୍ଧନ",
+    "fromToYou": "ଆମ ରନ୍ଧନଶାଳାରୁ ଆପଣଙ୍କ ପାଇଁ।",
+    "prep": "ପ୍ରସ୍ତୁତି",
+    "cook": "ରନ୍ଧନ",
+    "servings": "ପରିବେଷଣ",
+    "recipeBy": "ରେସିପି ଦେଇଛନ୍ତି",
+    "print": "ରେସିପି ପ୍ରିଣ୍ଟ୍ କରନ୍ତୁ",
+    "editYours": "ନିଜ ରେସିପି ସମ୍ପାଦନା",
+    "gather": "ସବୁ ସାମଗ୍ରୀ ସଜାନ୍ତୁ",
+    "ingredients": "ଆବଶ୍ୟକ ସାମଗ୍ରୀ",
+    "kitchenNote": "ରନ୍ଧନ ଟିପ୍ପଣୀ:",
+    "checkNote": "ରନ୍ଧିବା ସମୟରେ ପ୍ରସ୍ତୁତ ସାମଗ୍ରୀରେ ଟିକ୍ ଲଗାନ୍ତୁ। ଏହି ପୃଷ୍ଠାରେ ଟିକ୍ ଚିହ୍ନ ରହିବ।",
+    "goodPart": "ରନ୍ଧନ ଆରମ୍ଭ କରନ୍ତୁ",
+    "howTo": "ପ୍ରସ୍ତୁତି ପ୍ରଣାଳୀ",
+    "ready": "ପ୍ରସ୍ତୁତ",
+    "notTranslated": "ଏହି ରେସିପିର ଓଡ଼ିଆ ଅନୁବାଦ ଏପର୍ଯ୍ୟନ୍ତ ଯୋଡ଼ାଯାଇନାହିଁ। ତେଣୁ ଇଂରାଜୀ ଲେଖା ଦେଖାଯାଉଛି।",
+    "dashboard": "ରୋଷେୟା ଡେସ୍କ",
+    "signedInKitchen": "ଆପଣଙ୍କ ରନ୍ଧନ ଘର",
+    "welcome": "ସ୍ୱାଗତ,",
+    "dashboardCopy": "କ’ଣ କରିବାକୁ ଚାହୁଁଛନ୍ତି ବାଛନ୍ତୁ। Firebase ସହିତ ଯୋଡ଼ା ହେଲେ ଆପଣଙ୍କ ପରିବର୍ତ୍ତନ ସମସ୍ତଙ୍କୁ ଦେଖାଯିବ।",
+    "addDesc": "ଫଟୋ, ସାମଗ୍ରୀ ଓ ପ୍ରସ୍ତୁତି ପ୍ରଣାଳୀ ସହ ନୂଆ ଖାଦ୍ୟ ଯୋଡ଼ନ୍ତୁ।",
+    "editDesc": "ଆପଣ ପୂର୍ବରୁ ଯୋଡ଼ିଥିବା ରେସିପିକୁ ବଦଳାନ୍ତୁ।",
+    "liveNote": "ଆପଣ ଅନୁମୋଦିତ ଇମେଲ୍‌ରେ ଲଗଇନ୍ କରିଛନ୍ତି।",
+    "demoNote": "ଏହା କେବଳ ଡେମୋ; ପରିବର୍ତ୍ତନ ଏହି ବ୍ରାଉଜରରେ ରହିବ, ଅନଲାଇନ୍‌ରେ ବାଣ୍ଟାଯିବ ନାହିଁ।",
+    "yourContrib": "ଆପଣଙ୍କ ରେସିପି",
+    "editHeading": "ରେସିପି ସମ୍ପାଦନା କରନ୍ତୁ।",
+    "editInstructions": "ସାମଗ୍ରୀ, ଫଟୋ ଲିଙ୍କ୍ କିମ୍ବା ରନ୍ଧନ ପ୍ରଣାଳୀ ବଦଳାଇବା ପାଇଁ ରେସିପି ବାଛନ୍ତୁ।",
+    "view": "ଦେଖନ୍ତୁ",
+    "edit": "ସମ୍ପାଦନା",
+    "noOwn": "ଆପଣ ଏପର୍ଯ୍ୟନ୍ତ କୌଣସି ରେସିପି ଯୋଡ଼ିନାହାନ୍ତି। ଗୋଟିଏ ନୂଆ ରେସିପି ଯୋଡ଼ନ୍ତୁ।",
+    "backDesk": "ରନ୍ଧନ ଡେସ୍କକୁ ଫେରନ୍ତୁ",
+    "cantEdit": "ଏହି ରେସିପି ସମ୍ପାଦନା କରିପାରିବେ ନାହିଁ",
+    "onlyOriginal": "କେବଳ ମୂଳ ରୋଷେୟା ଏହାକୁ ସମ୍ପାଦନା କରିପାରିବେ।",
+    "newRecipe": "ନୂଆ ରେସିପି",
+    "improve": "ପ୍ରିୟ ରେସିପିକୁ ଆହୁରି ଭଲ କରନ୍ତୁ",
+    "shareDelicious": "ନୂଆ ସ୍ୱାଦ ବାଣ୍ଟନ୍ତୁ",
+    "editYour": "ନିଜ ରେସିପି ବଦଳାନ୍ତୁ।",
+    "addTable": "ସମସ୍ତଙ୍କ ପାଇଁ ଯୋଡ଼ନ୍ତୁ।",
+    "editFormCopy": "ପରିବର୍ତ୍ତନ କରି ସେଭ୍ କରନ୍ତୁ।",
+    "addFormCopy": "ଥରେ ରେସିପି ଲେଖନ୍ତୁ; ସମସ୍ତେ ଏହାକୁ ପଢ଼ିପାରିବେ।",
+    "publishingAs": "ରେସିପି ଯୋଡ଼ୁଛନ୍ତି",
+    "recipeName": "ରେସିପି ନାମ *",
+    "category": "ବର୍ଗ",
+    "shortDescription": "ସଂକ୍ଷିପ୍ତ ବିବରଣୀ",
+    "prepMinutes": "ପ୍ରସ୍ତୁତି ସମୟ (ମିନିଟ୍)",
+    "cookMinutes": "ରନ୍ଧନ ସମୟ (ମିନିଟ୍)",
+    "ingredientsRequired": "ଆବଶ୍ୟକ ସାମଗ୍ରୀ *",
+    "ingredientsHint": "ପ୍ରତି ଲାଇନ୍‌ରେ ଗୋଟିଏ ସାମଗ୍ରୀ ଲେଖନ୍ତୁ। ପରିମାଣ ଓ ଏକକ ମଧ୍ୟ ଲେଖିପାରିବେ।",
+    "stepsRequired": "ରନ୍ଧନ ପ୍ରଣାଳୀ *",
+    "stepsHint": "ପ୍ରତି ଲାଇନ୍‌ରେ ଗୋଟିଏ ପଦକ୍ଷେପ। ପୃଷ୍ଠା ସ୍ୱୟଂଚାଳିତ ଭାବେ କ୍ରମିକ ସଂଖ୍ୟା ଦେବ।",
+    "photoDemo": "ଖାଦ୍ୟ ଫଟୋ (ଡେମୋ)",
+    "photoDemoHint": "ଇଚ୍ଛାଧୀନ: JPG, PNG କିମ୍ବା WebP, 750 KB ରୁ କମ୍। ଫଟୋ କେବଳ ଏହି ବ୍ରାଉଜରରେ ରହିବ।",
+    "photoURL": "ଖାଦ୍ୟ ଫଟୋ ଲିଙ୍କ୍",
+    "photoHintLive": "ସର୍ବସାଧାରଣ ଫଟୋ URL ଦିଅନ୍ତୁ। ସିଧାସଳଖ ଅପଲୋଡ୍ ପାଇଁ Firebase Storage (Blaze) ଦରକାର।",
+    "photoHintDemo": "ସର୍ବସାଧାରଣ ଫଟୋ URL ମଧ୍ୟ ଦେଇପାରିବେ। ଡେମୋରେ ଅପଲୋଡ୍ କରାଯାଇଥିବା ଫଟୋକୁ ପ୍ରାଥମିକତା ଦିଆଯିବ।",
+    "saveChanges": "ପରିବର୍ତ୍ତନ ସେଭ୍ କରନ୍ତୁ",
+    "publish": "ରେସିପି ପ୍ରକାଶ କରନ୍ତୁ",
+    "cancel": "ବାତିଲ୍",
+    "delete": "ରେସିପି ହଟାନ୍ତୁ",
+    "tryContributor": "ରୋଷେୟା ଡେମୋ ଦେଖନ୍ତୁ",
+    "welcomeChef": "ସ୍ୱାଗତ, ରୋଷେୟା।",
+    "previewMessage": "ଏହା ଏକ ସ୍ଥାନୀୟ ଡେମୋ। ରେସିପି ଯୋଡ଼ିବା ଓ ସମ୍ପାଦନା କରିବାକୁ ଡେମୋ ରୋଷେୟା ବାଛନ୍ତୁ। ଏହା ପ୍ରକୃତ ଲଗଇନ୍ ନୁହେଁ।",
+    "signAs": "ଲଗଇନ୍ କରନ୍ତୁ",
+    "liveRestriction": "ପ୍ରକୃତ ୱେବସାଇଟରେ Firebase ସୁରକ୍ଷା ନିୟମ ଅନୁସାରେ କେବଳ ତିନି ଅନୁମୋଦିତ ଇମେଲ୍‌କୁ ଅଧିକାର ମିଳିବ।",
+    "threeContributors": "ତିନି ଅନୁମୋଦିତ ରୋଷେୟା",
+    "accountStatus": "ଆକାଉଣ୍ଟ ସ୍ଥିତି",
+    "signInDesc": "ତିନିଟି ଅନୁମୋଦିତ ଇମେଲ୍‌ ମଧ୍ୟରୁ ଗୋଟିଏ ସହ ଲଗଇନ୍ କରନ୍ତୁ। ପାଠକଙ୍କୁ ଆକାଉଣ୍ଟ ଦରକାର ନାହିଁ।",
+    "signedAs": "ଲଗଇନ୍ କରିଛନ୍ତି",
+    "editingUnavailable": "କିନ୍ତୁ ସମ୍ପାଦନା ଅନୁମତି ନାହିଁ।",
+    "verifyInstruction": "ଇମେଲ୍ ଯାଞ୍ଚ କରି ଲଗଆଉଟ୍ ଓ ପୁଣି ଲଗଇନ୍ କରନ୍ତୁ।",
+    "notApproved": "ଏହି ଇମେଲ୍ ତିନିଜଣ ରୋଷେୟାଙ୍କ ତାଲିକାରେ ନାହିଁ।",
+    "sendVerify": "ଯାଞ୍ଚ ଇମେଲ୍ ପଠାନ୍ତୁ",
+    "googleSignIn": "Google ଦ୍ୱାରା ଲଗଇନ୍",
+    "emailPassword": "କିମ୍ବା ଇମେଲ୍ ଓ ପାସୱାର୍ଡ ବ୍ୟବହାର କରନ୍ତୁ",
+    "emailAddress": "ଅନୁମୋଦିତ ଇମେଲ୍ ଠିକଣା",
+    "password": "ପାସୱାର୍ଡ",
+    "firebasePassword": "ଆପଣଙ୍କ Firebase ପାସୱାର୍ଡ",
+    "signInButton": "ଲଗଇନ୍",
+    "verifySent": "ଯାଞ୍ଚ ଇମେଲ୍ ପଠାଯାଇଛି। ଇନବକ୍ସ ଦେଖନ୍ତୁ।",
+    "englishFields": "ଇଂରାଜୀରେ ରେସିପି ସୂଚନା",
+    "odiaFields": "ଓଡ଼ିଆ ଅନୁବାଦ (ଇଚ୍ଛାଧୀନ)",
+    "odiaHelp": "ନିଜ ରେସିପିକୁ ଓଡ଼ିଆରେ ଦେଖାଇବାକୁ ଏହି ଘରଗୁଡ଼ିକ ମଧ୍ୟ ପୂରଣ କରନ୍ତୁ। ଖାଲି ରଖିଲେ ଇଂରାଜୀ ଲେଖା ଦେଖାଯିବ।",
+    "titleOdia": "ଓଡ଼ିଆରେ ରେସିପି ନାମ",
+    "descriptionOdia": "ଓଡ଼ିଆରେ ବିବରଣୀ",
+    "ingredientsOdia": "ଓଡ଼ିଆରେ ସାମଗ୍ରୀ",
+    "stepsOdia": "ଓଡ଼ିଆରେ ପ୍ରସ୍ତୁତି ପଦକ୍ଷେପ",
+    "odiaLineHint": "ଇଂରାଜୀ ତାଲିକା ଅନୁସାରେ ପ୍ରତି ଲାଇନ୍‌ରେ ଗୋଟିଏ ଲେଖନ୍ତୁ।",
+    "saved": "ରେସିପି ଅଦ୍ୟତନ ହେଲା!",
+    "published": "ରେସିପି ପ୍ରକାଶ ହେଲା!",
+    "deleted": "ରେସିପି ହଟାଗଲା",
+    "saving": "ରେସିପି ସେଭ୍ ହେଉଛି…",
+    "deleteConfirm": "ଏହି ରେସିପିକୁ ହଟାଇବେ? ଏହା ପଛକୁ ଫେରାଯାଇପାରିବ ନାହିଁ।",
+    "errorRecipeName": "ଦୟାକରି ରେସିପି ନାମ ଦିଅନ୍ତୁ।",
+    "errorItemRequired": "ଅତିକମ୍‌ରେ ଗୋଟିଏ ସାମଗ୍ରୀ ଓ ଗୋଟିଏ ପଦକ୍ଷେପ ଲେଖନ୍ତୁ।",
+    "errorTooMany": "ସର୍ବାଧିକ 100ଟି ସାମଗ୍ରୀ ଓ 60ଟି ପଦକ୍ଷେପ ରଖନ୍ତୁ।",
+    "errorPhoto": "ଫଟୋ ଲିଙ୍କ୍ https:// କିମ୍ବା http:// ରୁ ଆରମ୍ଭ ହେବା ଦରକାର।",
+    "errorSave": "ରେସିପି ସେଭ୍ ହେଲା ନାହିଁ",
+    "errorStorage": "ବ୍ରାଉଜର ଷ୍ଟୋରେଜ୍ ଭରିଯାଇଛି — ଛୋଟ ଫଟୋ ବ୍ୟବହାର କରନ୍ତୁ।",
+    "placeholderTitle": "ଜେଜେମାଙ୍କ ଛୁଟିଦିନର ତରକାରୀ",
+    "placeholderDesc": "ଏହି ଖାଦ୍ୟ କାହିଁକି ସ୍ୱତନ୍ତ୍ର?",
+    "placeholderIng": "୨ ଚାମଚ ତେଲ\n୧ଟି ପିଆଜ, କଟା\n୨୦୦ ଗ୍ରାମ ଟମାଟୋ",
+    "placeholderSteps": "କଡ଼େଇରେ ତେଲ ଗରମ କରନ୍ତୁ।\nପିଆଜ ପକାଇ ନରମ ହେବାଯାଏ ଭାଜନ୍ତୁ।\nଟମାଟୋ ପକାଇ ଫୁଟାନ୍ତୁ।",
+    "statusCopy": "ପ୍ରଥମେ ଇଂରାଜୀ ଦେଖାଯିବ। ଆପଣ ଯେକୌଣସି ସମୟରେ ଭାଷା ବଦଳାଇପାରିବେ।",
+    "photoAlt": "ସୁନ୍ଦର ଭାବେ ସଜାଯାଇଥିବା ସତେଜ ଖାଦ୍ୟ"
+  }
+};
+const ODIA_CATEGORIES = {"Breakfast": "ଜଳଖିଆ", "Lunch": "ମଧ୍ୟାହ୍ନ ଭୋଜନ", "Dinner": "ରାତ୍ରି ଭୋଜନ", "Sides": "ଅନ୍ୟାନ୍ୟ ପଦ", "Dessert": "ମିଠା", "Snacks": "ସ୍ନାକ୍ସ", "Drinks": "ପାନୀୟ", "Other": "ଅନ୍ୟ"};
+const SAMPLE_ODIA = {
+  "pasta": {
+    "title": "ରବିବାରର ଟମାଟୋ ପାସ୍ତା",
+    "description": "ଟମାଟୋ, ରସୁଣ ଓ ତୁଳସୀ ପତ୍ରର ସୁଗନ୍ଧିତ ସସ୍‌ରେ ସହଜ ଓ ସ୍ୱାଦିଷ୍ଟ ପାସ୍ତା।",
+    "ingredients": [
+      "୨୫୦ ଗ୍ରାମ ପାସ୍ତା",
+      "୩ ବଡ଼ ଚାମଚ ଅଲିଭ୍ ତେଲ",
+      "୪ କୋଲା ରସୁଣ, ପତଳା କଟା",
+      "୪୦୦ ଗ୍ରାମ ଚୂରା କରା ଟମାଟୋ",
+      "ଏକ ମୁଠା ସତେଜ ବେସିଲ୍ ପତ୍ର",
+      "ଲୁଣ, ଗୋଲମରିଚ ଓ ପାର୍ମେଜାନ୍ ଚିଜ୍"
+    ],
+    "steps": [
+      "ପାଣିରେ ଲୁଣ ଦେଇ ଫୁଟାନ୍ତୁ। ପାସ୍ତାକୁ ସାମାନ୍ୟ କଠିନ ରହିବା ପର୍ଯ୍ୟନ୍ତ ସିଝାନ୍ତୁ। ଏକ କପ୍ ସିଝା ପାଣି ରଖନ୍ତୁ।",
+      "କଡ଼େଇରେ ଅଲିଭ୍ ତେଲ ଗରମ କରି ରସୁଣକୁ ପୋଡ଼ି ନ ଦେଇ ହାଲୁକା ଭାଜନ୍ତୁ।",
+      "ଟମାଟୋ ପକାଇ ୧୫–୨୦ ମିନିଟ୍ ମନ୍ଥର ଆଞ୍ଚରେ ରାନ୍ଧନ୍ତୁ। ଲୁଣ ଓ ବେସିଲ୍ ପତ୍ର ମିଶାନ୍ତୁ।",
+      "ସସ୍‌ରେ ପାସ୍ତା ଓ ସାମାନ୍ୟ ସିଝା ପାଣି ମିଶାଇ ଭଲଭାବେ ଗୋଳାନ୍ତୁ। ଚିଜ୍ ଛିଞ୍ଚି ପରିବେଷଣ କରନ୍ତୁ।"
+    ]
+  },
+  "salad": {
+    "title": "ପ୍ରତିଦିନର ସବୁଜ ସାଲାଡ୍",
+    "description": "ସତେଜ ପତ୍ର ଓ ପନିପରିବା ସହ ଲେମ୍ବୁର ହାଲୁକା ଡ୍ରେସିଂ।",
+    "ingredients": [
+      "୨ କପ୍ ମିଶ୍ରିତ ସବୁଜ ପତ୍ର",
+      "୧ଟି କାକୁଡ଼ି, କଟା",
+      "୧ଟି ଗାଜର, କୋରା",
+      "୧ଟି ପାଚିଲା ଆଭୋକାଡୋ",
+      "୨ ବଡ଼ ଚାମଚ ଅଲିଭ୍ ତେଲ",
+      "୧ଟି ଲେମ୍ବୁର ରସ",
+      "ଲୁଣ ଓ ଭଜା ମଞ୍ଜି"
+    ],
+    "steps": [
+      "ସବୁଜ ପତ୍ରଗୁଡ଼ିକୁ ଭଲଭାବେ ଧୋଇ ଶୁଖାନ୍ତୁ।",
+      "କାକୁଡ଼ି ଓ ଆଭୋକାଡୋ କାଟନ୍ତୁ, ଗାଜର କୋରନ୍ତୁ।",
+      "ଛୋଟ ପାତ୍ରରେ ଅଲିଭ୍ ତେଲ, ଲେମ୍ବୁ ରସ ଓ ଲୁଣ ଗୋଳାନ୍ତୁ।",
+      "ସବୁ ପନିପରିବା ସଜାଇ ଡ୍ରେସିଂ ଢାଳନ୍ତୁ ଓ ଭଜା ମଞ୍ଜି ଛିଞ୍ଚି ପରିବେଷଣ କରନ୍ତୁ।"
+    ]
+  },
+  "bowl": {
+    "title": "ତିଳ ଭାତ ଓ ପନିପରିବା ବାଉଲ୍",
+    "description": "ରଙ୍ଗବେରଙ୍ଗ ପନିପରିବା ଓ ତିଳ ସସ୍ ସହ ଏକ ପୌଷ୍ଟିକ ଭାତ ବାଉଲ୍।",
+    "ingredients": [
+      "୧ କପ୍ କଞ୍ଚା ଚାଉଳ",
+      "୧ଟି ଛୋଟ ମିଠା ଆଳୁ",
+      "୧ କପ୍ ବ୍ରୋକୋଲି ଫୁଲ",
+      "୧ଟି ଆଭୋକାଡୋ",
+      "୧ ବଡ଼ ଚାମଚ ତିଳ",
+      "୨ ବଡ଼ ଚାମଚ ସୋୟା ସସ୍",
+      "୧ ବଡ଼ ଚାମଚ ତିଳ ତେଲ",
+      "୧ ଛୋଟ ଚାମଚ ଚାଉଳ ଭିନେଗାର"
+    ],
+    "steps": [
+      "ପ୍ୟାକେଟ୍‌ର ନିର୍ଦ୍ଦେଶ ଅନୁସାରେ ଚାଉଳ ସିଝାନ୍ତୁ।",
+      "ମିଠା ଆଳୁ କାଟି ସାମାନ୍ୟ ତେଲ ଦେଇ ୨୧୦°C ରେ ୨୦ ମିନିଟ୍ ଭାଜନ୍ତୁ।",
+      "ବ୍ରୋକୋଲିକୁ ଅଳ୍ପ ସମୟ ବାଷ୍ପରେ ସିଝାନ୍ତୁ, ଯାହାରେ ଏହା ମୁଚମୁଚା ରହିବ।",
+      "ସୋୟା ସସ୍, ତିଳ ତେଲ ଓ ଭିନେଗାର ମିଶାନ୍ତୁ। ଭାତ ଓ ପନିପରିବା ସଜାଇ ଉପରେ ସସ୍ ଢାଳନ୍ତୁ।"
+    ]
+  },
+  "noodles": {
+    "title": "ମଧ୍ୟରାତ୍ରିର ତିଳ ନୁଡଲ୍ସ",
+    "description": "ତିଳ ଓ ଲଙ୍କା ସସ୍‌ରେ ଶୀଘ୍ର ତିଆରି ହେଉଥିବା ମସଲାଦାର ନୁଡଲ୍ସ।",
+    "ingredients": [
+      "୨୦୦ ଗ୍ରାମ ନୁଡଲ୍ସ",
+      "୨ ବଡ଼ ଚାମଚ ସୋୟା ସସ୍",
+      "୧ ବଡ଼ ଚାମଚ ତିଳ ତେଲ",
+      "୧ ବଡ଼ ଚାମଚ ଚିଲି କ୍ରିସ୍ପ୍",
+      "୧ ଛୋଟ ଚାମଚ ମହୁ କିମ୍ବା ଚିନି",
+      "୧ କୋଲା ରସୁଣ, କୋରା",
+      "୨ଟି କଞ୍ଚା ପିଆଜ"
+    ],
+    "steps": [
+      "ଫୁଟୁଥିବା ପାଣିରେ ନୁଡଲ୍ସ ସିଝାଇ ଅଳ୍ପ ସିଝା ପାଣି ଅଲଗା ରଖନ୍ତୁ।",
+      "ସୋୟା ସସ୍, ତିଳ ତେଲ, ଚିଲି କ୍ରିସ୍ପ୍, ମହୁ ଓ ରସୁଣ ଗୋଳାନ୍ତୁ।",
+      "ଗରମ ନୁଡଲ୍ସରେ ସସ୍ ଓ ଅଳ୍ପ ସିଝା ପାଣି ମିଶାନ୍ତୁ।",
+      "ଉପରେ କଟା କଞ୍ଚା ପିଆଜ ଛିଞ୍ଚି ସଙ୍ଗେ ସଙ୍ଗେ ପରିବେଷଣ କରନ୍ତୁ।"
+    ]
+  },
+  "pancakes": {
+    "title": "ସକାଳର ନରମ ପ୍ୟାନକେକ୍",
+    "description": "ଫଳ ଓ ମେପଲ୍ ସିରପ୍ ସହ ଖାଇବାକୁ ହାଲୁକା ସୁନେଲି ପ୍ୟାନକେକ୍।",
+    "ingredients": [
+      "୧ କପ୍ ମଇଦା",
+      "୧ ବଡ଼ ଚାମଚ ଚିନି",
+      "୧ ଛୋଟ ଚାମଚ ବେକିଂ ପାଉଡର୍",
+      "୧ଟି ବଡ଼ ଅଣ୍ଡା",
+      "୩/୪ କପ୍ କ୍ଷୀର",
+      "୧ ବଡ଼ ଚାମଚ ତରଳ ବଟର୍",
+      "ମେପଲ୍ ସିରପ୍ ଓ ଫଳ"
+    ],
+    "steps": [
+      "ପାତ୍ରରେ ମଇଦା, ଚିନି ଓ ବେକିଂ ପାଉଡର୍ ମିଶାନ୍ତୁ।",
+      "ଅନ୍ୟ ପାତ୍ରରେ ଅଣ୍ଡା, କ୍ଷୀର ଓ ବଟର୍ ଫେଣ୍ଟନ୍ତୁ। ତରଳ ମିଶ୍ରଣକୁ ଶୁଖିଲା ମିଶ୍ରଣରେ ହାଲୁକା ମିଶାନ୍ତୁ।",
+      "ହାଲୁକା ତେଲ ଲଗା କଡ଼େଇରେ ମଧ୍ୟମ ଆଞ୍ଚରେ ପ୍ୟାନକେକ୍ ସେକନ୍ତୁ। ଫୋଟକା ଆସିଲେ ଓଲଟାନ୍ତୁ।",
+      "ଗରମ ପ୍ୟାନକେକ୍‌କୁ ମେପଲ୍ ସିରପ୍ ଓ ଫଳ ସହ ପରିବେଷଣ କରନ୍ତୁ।"
+    ]
+  },
+  "garden": {
+    "title": "ବଜାରର ସତେଜ ପନିପରିବା ଥାଳି",
+    "description": "ସହଜ ଋତୁକାଳୀନ ସାମଗ୍ରୀର ମୁଚମୁଚା ରଙ୍ଗୀନ ପନିପରିବା ଥାଳି।",
+    "ingredients": [
+      "୨ଟି ଟମାଟୋ",
+      "୧ଟି କାକୁଡ଼ି",
+      "୨ଟି ଗାଜର",
+      "୧ଟି କ୍ୟାପସିକମ୍",
+      "ଅଳ୍ପ ସତେଜ ଧନିଆ/ଅନ୍ୟ ପତ୍ର",
+      "୨ ବଡ଼ ଚାମଚ ଏକ୍ସଟ୍ରା-ଭର୍ଜିନ୍ ଅଲିଭ୍ ତେଲ",
+      "୧ ବଡ଼ ଚାମଚ ଲେମ୍ବୁ ରସ",
+      "ଲୁଣ ଓ ଗୋଲମରିଚ"
+    ],
+    "steps": [
+      "ସବୁ ପନିପରିବା ଧୋଇ ଭଲଭାବେ ଶୁଖାନ୍ତୁ।",
+      "ସବୁ ପନିପରିବାକୁ ସୁନ୍ଦର ଛୋଟ ଛୋଟ ଖଣ୍ଡରେ କାଟନ୍ତୁ।",
+      "ଅଲିଭ୍ ତେଲ, ଲେମ୍ବୁ ରସ, ଲୁଣ ଓ ଗୋଲମରିଚ ଗୋଳାନ୍ତୁ।",
+      "ବଡ଼ ଥାଳିରେ ସଜାଇ ପତ୍ର ଦେଇ ସୁନ୍ଦର କରନ୍ତୁ ଓ ଡ୍ରେସିଂ ସହ ପରିବେଷଣ କରନ୍ତୁ।"
+    ]
+  }
+};
+function t(key){return TEXTS[currentLanguage][key]??TEXTS.en[key]??key;}
+function categoryText(c){return currentLanguage==='or'?(ODIA_CATEGORIES[c]||c||t('recipe')):(c||t('recipe'));}
+function localizedRecipe(r){
+ if(currentLanguage!=='or')return {...r,needsTranslation:false};
+ const src = SAMPLE_ODIA[r.id]||r;
+ const hasOdia = !!(src.title_or||src.title && SAMPLE_ODIA[r.id]);
+ return {...r,
+  title:src.title_or|| (SAMPLE_ODIA[r.id]?src.title:r.title),
+  description:src.description_or||(SAMPLE_ODIA[r.id]?src.description:r.description),
+  ingredients:src.ingredients_or?.length?src.ingredients_or:(SAMPLE_ODIA[r.id]?src.ingredients:r.ingredients),
+  steps:src.steps_or?.length?src.steps_or:(SAMPLE_ODIA[r.id]?src.steps:r.steps),
+  needsTranslation:!hasOdia
+ };
+}
+function renderLanguageSwitch(){
+ document.documentElement.lang=currentLanguage;
+ document.title=(currentLanguage==='or'?'Chef’s Table — ସମସ୍ତଙ୍କ ରନ୍ଧନ ପୁସ୍ତକ':'Chef’s Table — Our Shared Cookbook');
+ for(const lang of ['en','or']){
+  const b=document.getElementById('language-'+lang);
+  b.setAttribute('aria-pressed',String(currentLanguage===lang));
+ }
+ document.getElementById('brand-tagline').textContent=t('brandTagline');
+ document.getElementById('footer-tagline').textContent=t('footerTagline');
+ document.getElementById('footer-mode').textContent=t('footerMode');
+}
+function changeLanguage(lang){
+ if(lang===currentLanguage||!['en','or'].includes(lang))return;
+ if(document.getElementById('recipe-form')&&!window.confirm(currentLanguage==='or'?'ଭାଷା ବଦଳାଇଲେ ସେଭ୍ ହୋଇନଥିବା ଲେଖା ହରାଇଯିବ। ଆଗକୁ ବଢ଼ିବେ?':'Switching languages will discard unsaved form changes. Continue?'))return;
+ currentLanguage=lang;
+ try{localStorage.setItem(LANGUAGE_KEY,lang)}catch{}
+ render();
+}
+document.getElementById('language-en').addEventListener('click',()=>changeLanguage('en'));
+document.getElementById('language-or').addEventListener('click',()=>changeLanguage('or'));
+renderLanguageSwitch();
 
 const SAMPLE = [
  {id:'pasta',title:'Slow Sunday Tomato Pasta',description:'A silky tomato sauce, garlic, and lots of basil. Comfort food at its simplest.',category:'Dinner',prep_minutes:10,cook_minutes:25,servings:3,author_id:'chef-a',author_name:'Chef A',image_url:'https://images.unsplash.com/photo-1473093226795-af9932fe5856?auto=format&fit=crop&w=1000&q=85',ingredients:['250 g pasta','3 tbsp olive oil','4 garlic cloves, thinly sliced','400 g crushed tomatoes','A handful of fresh basil','Salt, black pepper and parmesan'],steps:['Bring generously salted water to a boil and cook pasta until just shy of al dente. Reserve a cup of cooking water.','Warm olive oil in a pan. Gently sauté sliced garlic until fragrant, without browning.','Add tomatoes and simmer 15–20 minutes. Season and stir in torn basil.','Toss pasta with sauce and a splash of pasta water until glossy. Finish with parmesan.']},
@@ -60,7 +540,6 @@ const SAMPLE = [
  {id:'bowl',title:'Sesame Rice & Veggie Bowl',description:'A colorful rice bowl with crisp vegetables and a tangy sesame finish.',category:'Lunch',prep_minutes:20,cook_minutes:20,servings:2,author_id:'chef-c',author_name:'Chef C',image_url:'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1000&q=85',ingredients:['1 cup uncooked rice','1 small sweet potato','1 cup broccoli florets','1 avocado','1 tbsp sesame seeds','2 tbsp soy sauce','1 tbsp sesame oil','1 tsp rice vinegar'],steps:['Cook rice until tender according to the package instructions.','Dice sweet potato; roast with a little oil at 210°C for 20 minutes, until golden.','Steam broccoli briefly so it stays vibrant and crisp.','Whisk soy sauce, sesame oil and rice vinegar. Build bowls and spoon dressing over the top.']},
  {id:'noodles',title:'Midnight Sesame Noodles',description:'Quick, spicy noodles with a glossy sesame-chili sauce.',category:'Dinner',prep_minutes:8,cook_minutes:10,servings:2,author_id:'chef-a',author_name:'Chef A',image_url:'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=1000&q=85',ingredients:['200 g noodles','2 tbsp soy sauce','1 tbsp sesame oil','1 tbsp chili crisp','1 tsp honey or sugar','1 garlic clove, grated','2 scallions'],steps:['Cook noodles in a pot of boiling water and save a little cooking liquid.','Combine soy sauce, sesame oil, chili crisp, sweetener and garlic.','Toss hot drained noodles with sauce and a splash of cooking water.','Top with sliced scallions and serve straight away.']},
  {id:'pancakes',title:'Lazy Morning Pancakes',description:'Light golden pancakes, perfect with fresh fruit and maple syrup.',category:'Breakfast',prep_minutes:10,cook_minutes:15,servings:4,author_id:'chef-b',author_name:'Chef B',image_url:'https://images.unsplash.com/photo-1521389508051-d7ffb5dc8f5e?auto=format&fit=crop&w=1000&q=85',ingredients:['1 cup plain flour','1 tbsp sugar','1 tsp baking powder','1 large egg','¾ cup milk','1 tbsp melted butter','Maple syrup and fruit'],steps:['Whisk flour, sugar and baking powder together in a bowl.','Beat egg, milk and butter in a second bowl. Fold wet mixture into dry, leaving a few small lumps.','Cook ladlefuls of batter in a lightly greased skillet over medium heat. Flip when bubbles appear.','Serve warm with maple syrup and fruit.']},
- {id:'garden',title:'Fresh Market Harvest Plate',description:'A crisp vegetable platter that celebrates simple, seasonal ingredients.',category:'Sides',prep_minutes:15,cook_minutes:0,servings:4,author_id:'chef-c',author_name:'Chef C',image_url:'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1000&q=85',ingredients:['2 tomatoes','1 cucumber','2 carrots','1 bell pepper','1 small bunch fresh herbs','2 tbsp extra-virgin olive oil','1 tbsp lemon juice','Salt and pepper'],steps:['Wash the vegetables and pat them dry.','Cut all vegetables into attractive bite-sized pieces.','Whisk olive oil, lemon juice, salt and pepper.','Arrange everything on a large platter, garnish with herbs and serve dressing alongside.']}
 ];
 const DEMO_CHEFS=[{id:'chef-a',name:'Chef A'},{id:'chef-b',name:'Chef B'},{id:'chef-c',name:'Chef C'}];
 const $=s=>document.querySelector(s);
@@ -75,9 +554,25 @@ let toastTimer;
 function notify(message){const t=$('#toast');t.textContent=message;t.style.display='block';clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.style.display='none',4200)}
 function author(){return CONNECTED?(contributor&&user?{id:user.uid,name:contributor.display_name}:null):(activeDemo?(DEMO_CHEFS.find(c=>c.id===activeDemo)||null):null)}
 function canEdit(r){const a=author();return !!a&&r.author_id===a.id}
-function demoLoad(){try{const val=JSON.parse(localStorage.getItem('chefs-table-recipes-v1'));return Array.isArray(val)?val:SAMPLE.map(x=>({...x}))}catch{return SAMPLE.map(x=>({...x}))}}
-function demoSave(){try{localStorage.setItem('chefs-table-recipes-v1',JSON.stringify(recipes));return true}catch{notify('This browser has no room to save. Try a smaller photo.');return false}}
-async function refreshRecipes(){if(!CONNECTED){recipes=demoLoad();return;}const snapshot=await fb.getDocs(fb.collection(db,'recipes'));recipes=snapshot.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>String(b.created_at||'').localeCompare(String(a.created_at||'')))}
+function demoLoad(){
+  try {
+    const val=JSON.parse(localStorage.getItem('chefs-table-recipes-v1'));
+    if(Array.isArray(val)) {
+      // Upgrade older previews that had six untouched sample recipes. Preserve any user-added recipes.
+      return val.filter(r=>!(r.id==='garden' && r.title==='Fresh Market Harvest Plate' && r.author_id==='chef-c' && !r.created_at && !r.updated_at));
+    }
+  }catch{}
+  return SAMPLE.map(x=>({...x}));
+}
+function mergeLiveRecipes(items){
+  // Five read-only sample recipes are visible even before the first Firestore recipe is published.
+  // Do not write sample documents to Firestore or assign ownership to a real contributor.
+  const ids=new Set(items.map(x=>String(x.id)));
+  const starters=SAMPLE.filter(r=>!ids.has(String(r.id))).map(r=>({...r,is_builtin:true,author_name:"Chef's Table"}));
+  return [...items,...starters];
+}
+function demoSave(){try{localStorage.setItem('chefs-table-recipes-v1',JSON.stringify(recipes));return true}catch{notify(t('errorStorage'));return false}}
+async function refreshRecipes(){if(!CONNECTED){recipes=demoLoad();return;}const snapshot=await fb.getDocs(fb.collection(db,'recipes'));recipes=mergeLiveRecipes(snapshot.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>String(b.created_at||'').localeCompare(String(a.created_at||''))))}
 function refreshContributor(){const email=(user?.email||'').toLowerCase();contributor=(user&&user.emailVerified&&APPROVED_EMAILS.map(e=>e.toLowerCase()).includes(email))?{display_name:user.displayName||email.split('@')[0]}:null;}
 async function init(){
  if(!CONNECTED){recipes=demoLoad();render();return;}
@@ -91,24 +586,83 @@ async function init(){
   fb={...authMod,...storeMod};const app=appMod.initializeApp(firebaseConfig);
   auth=fb.getAuth(app);db=fb.getFirestore(app);
   fb.onAuthStateChanged(auth, u=>{user=u;refreshContributor();render()});
-  fb.onSnapshot(fb.collection(db,'recipes'),snap=>{recipes=snap.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>String(b.created_at||'').localeCompare(String(a.created_at||'')));const route=location.hash.split('/')[1]||'';if(!['add','edit'].includes(route))render();else renderNav();},err=>notify('Unable to load recipes: '+err.message));
+  fb.onSnapshot(fb.collection(db,'recipes'),snap=>{recipes=mergeLiveRecipes(snap.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>String(b.created_at||'').localeCompare(String(a.created_at||''))));const route=location.hash.split('/')[1]||'';if(!['add','edit'].includes(route))render();else renderNav();},err=>notify('Unable to load recipes: '+err.message));
  }catch(error){$('#app').innerHTML='<section class="page empty"><h3>Firebase could not connect</h3><p>Check your project configuration and internet connection.</p></section>';console.error(error);}
 }
 function render(){renderNav();const path=decodeURIComponent(location.hash.replace(/^#\/?/,'')||'');const parts=path.split('/').filter(Boolean);const route=parts[0]||'home';if(route==='recipe')renderRecipe(parts[1]);else if(route==='add')renderForm(null);else if(route==='edit')renderForm(parts[1]);else if(route==='manage')renderManage();else if(route==='dashboard')renderDashboard();else if(route==='sign-in')renderSignIn();else renderHome();$('#footer-mode').textContent=CONNECTED?'Firebase shared collection':'Local preview • This browser only'}
-function renderNav(){const a=author();$('#top-nav').innerHTML=`<a class="nav-text" href="#/">All recipes</a>${a?`<a class="btn small primary" href="#/add">＋ Add Recipe</a><a class="btn small ghost" href="#/manage">✎ Edit Recipe</a><a class="nav-text" href="#/dashboard">${escapeHTML(a.name)}</a><button type="button" class="btn small ghost" id="signout">Sign out</button>`:`<a class="btn small ghost" href="#/sign-in">Contributor Sign In</a>`}`;$('#mode-bar').innerHTML=`<div class="wrap"><span>${CONNECTED?`<strong>SHARED COOKBOOK</strong> · Everyone can read recipes. Only three approved emails can add or edit.`:`<strong>LOCAL PREVIEW</strong> · Sign in as a demo chef to try Add Recipe and Edit Recipe. Changes stay in this browser.`}</span>${a?`<span>Signed in as <strong>${escapeHTML(a.name)}</strong></span>`:''}</div>`;const out=$('#signout');if(out)out.onclick=async()=>{if(CONNECTED){await fb.signOut(auth);user=null;contributor=null;}else{activeDemo='';sessionStorage.removeItem('chefs-table-preview-user');}location.hash='#/';render();}}
-function homeListHtml(items){return items.map((r,i)=>`<a class="index-name" href="#/recipe/${encodeURIComponent(r.id)}"><span class="ordinal">${String(i+1).padStart(2,'0')}</span><span class="name">${escapeHTML(r.title)}</span><span class="arrow">↗</span></a>`).join('')||'<p class="muted">No matching recipes.</p>'}
-function homeCardsHtml(items){return items.map(r=>`<a class="recipe-card" href="#/recipe/${encodeURIComponent(r.id)}"><div class="card-image">${imageTag(r)}<span class="category">${escapeHTML(r.category||'Recipe')}</span></div><div class="card-body"><h4>${escapeHTML(r.title)}</h4><p>${escapeHTML(r.description||'A recipe from our shared table.')}</p><div class="card-meta"><span>By ${escapeHTML(r.author_name||'A contributor')}</span><span class="cook">◷ ${clock(r)} min</span></div></div></a>`).join('')||'<div class="empty"><h3>No recipes found</h3><p>Try another search, or be the first to add one.</p></div>'}
-function updateHomeLists(){const t=searchTerm.toLowerCase().trim();const list=recipes.filter(r=>(r.title+' '+r.category+' '+(r.description||'')+' '+(r.author_name||'')+' '+(r.ingredients||[]).join(' ')).toLowerCase().includes(t));$('#index-names').innerHTML=homeListHtml(list);$('#recipe-cards').innerHTML=homeCardsHtml(list);$('#recipe-count').textContent=`${list.length} ${list.length===1?'recipe':'recipes'}`}
-function renderHome(){$('#app').innerHTML=`<section class="hero"><div class="hero-copy"><div class="overline">The shared recipe collection</div><h1>Good food.<br><i>Better</i> together.</h1><p>One kitchen notebook, three passionate cooks. Explore familiar favorites, discover something new, and keep every recipe in one beautiful place.</p><div class="hero-line"><div><strong>${recipes.length}</strong><br>Recipes collected</div><span>✳</span><div><strong>03</strong><br>Contributing cooks</div></div></div><div class="hero-art"><img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1400&q=85" alt="Fresh, beautifully plated food"><div class="hero-stamp"><small>Made to share</small>Recipes worth remembering.</div></div></section>${author()?`<section class="chef-desk"><div><span class="section-kicker">Your kitchen desk</span><h3>Welcome back, ${escapeHTML(author().name)}.</h3><p>Ready to share something delicious or improve your recipes?</p></div><div class="desk-buttons"><a href="#/add" class="btn primary">＋ Add Recipe</a><a href="#/manage" class="btn ghost">✎ Edit Recipe</a></div></section>`:''}<section class="intro-section" id="all-recipes"><div class="row-between"><div><div class="section-label">✳ The recipe index</div><h2 class="section-heading">All recipes, one table.</h2><p class="section-sub">Find your dish below. Select any name to see its photograph, ingredients, and step-by-step method.</p></div><input type="search" class="search" id="search-recipe" placeholder="Search recipes or ingredients…" value="${escapeHTML(searchTerm)}" aria-label="Search recipes"></div><div class="index-box"><div class="index-top"><span>Recipe directory</span><span id="recipe-count">${recipes.length} recipes</span></div><div id="index-names" class="name-index"></div></div></section><section class="collection"><div class="collection-head"><h3>From our kitchen</h3><span class="count">Browse by photo ↗</span></div><div id="recipe-cards" class="card-grid"></div></section>`;updateHomeLists();$('#search-recipe').addEventListener('input',e=>{searchTerm=e.target.value;updateHomeLists()})}
-function renderRecipe(id){const r=recipes.find(x=>String(x.id)===String(id));if(!r){$('#app').innerHTML='<section class="page empty"><h3>Recipe not found</h3><p><a href="#/" class="accent-text">← Back to all recipes</a></p></section>';return}let checked=0;$('#app').innerHTML=`<section class="page"><div class="crumb"><a href="#/">All recipes</a><span class="slash">/</span>${escapeHTML(r.category||'Recipe')}<span class="slash">/</span>${escapeHTML(r.title)}</div><div class="detail-top"><div class="detail-photo">${imageTag(r)}</div><div class="detail-info"><div class="overline">${escapeHTML(r.category||'Home cooking')}</div><h1 class="detail-title">${escapeHTML(r.title)}</h1><p class="detail-description">${escapeHTML(r.description||'From our kitchen to yours.')}</p><div class="stats"><div><strong>${escapeHTML(r.prep_minutes||0)}m</strong><span>Prep</span></div><div><strong>${escapeHTML(r.cook_minutes||0)}m</strong><span>Cook</span></div><div><strong>${escapeHTML(r.servings||1)}</strong><span>Servings</span></div></div><div class="contributed">Recipe by <strong>${escapeHTML(r.author_name||'A contributor')}</strong></div><div class="detail-buttons"><button class="btn ghost" id="print-recipe">↗ Print recipe</button>${canEdit(r)?`<a class="btn primary" href="#/edit/${encodeURIComponent(r.id)}">✎ Edit your recipe</a>`:''}</div></div></div><div class="detail-bottom"><div><div class="section-kicker">Gather everything</div><h2 class="block-title">Ingredients <small id="done-count" class="muted" style="font:12px var(--sans)"></small></h2><ul class="ingredients-list">${(r.ingredients||[]).map(x=>`<li><label class="ingredient"><input type="checkbox" class="ingredient-check"><span>${escapeHTML(x)}</span></label></li>`).join('')}</ul><div class="note-box"><strong>Kitchen note:</strong> Check off each ingredient as you prepare it. Your marks stay on this page while you cook.</div></div><div><div class="section-kicker">The good part</div><h2 class="block-title">How to make it</h2><ol class="steps">${(r.steps||[]).map((x,i)=>`<li class="step"><span class="step-num">${String(i+1).padStart(2,'0')}</span><span class="step-text">${escapeHTML(x)}</span></li>`).join('')}</ol></div></div></section>`;$('#print-recipe').onclick=()=>window.print();const checks=[...document.querySelectorAll('.ingredient-check')];checks.forEach(ch=>ch.addEventListener('change',()=>{$('#done-count').textContent=`${checks.filter(x=>x.checked).length}/${checks.length} ready`}))}
-function renderDashboard(){const a=author();if(!a){location.hash='#/sign-in';return;}$('#app').innerHTML=`<section class="chef-dashboard"><div class="crumb"><a href="#/">All recipes</a><span class="slash">/</span>Contributor desk</div><div class="section-kicker">Signed-in kitchen</div><h1>Welcome, ${escapeHTML(a.name)}.</h1><p>Choose what you'd like to do. Your changes will appear in the shared cookbook when connected to Firebase.</p><div class="desk-grid"><a class="desk-tile" href="#/add"><span class="desk-icon">＋</span><strong>Add Recipe</strong><span>Share a new dish with its photo, ingredients and instructions.</span></a><a class="desk-tile" href="#/manage"><span class="desk-icon">✎</span><strong>Edit Recipe</strong><span>Update any of the recipes you've contributed.</span></a></div><p class="notice">${CONNECTED?'You are signed in with an approved email.':'Demo sign-in only: edits are saved on this browser, not shared online.'}</p></section>`}
-function renderManage(){const a=author();if(!a){location.hash='#/sign-in';return;}const mine=recipes.filter(canEdit);$('#app').innerHTML=`<section class="chef-dashboard"><div class="crumb"><a href="#/dashboard">Contributor desk</a><span class="slash">/</span>Edit recipe</div><div class="section-kicker">Your contributions</div><h1>Edit a recipe.</h1><p>Select a recipe below to change its ingredients, photo link, or cooking procedure.</p><div class="my-recipe-list">${mine.length?mine.map(r=>`<div class="my-recipe"><div><strong>${escapeHTML(r.title)}</strong><small>${escapeHTML(r.category||'Recipe')} · ${clock(r)} min</small></div><div class="desk-buttons"><a class="btn small ghost" href="#/recipe/${encodeURIComponent(r.id)}">View</a><a class="btn small primary" href="#/edit/${encodeURIComponent(r.id)}">✎ Edit</a></div></div>`).join(''):'<p class="notice">You have not added any recipes yet. Start by creating one.</p>'}</div><div class="auth-actions"><a class="btn primary" href="#/add">＋ Add Recipe</a><a class="btn ghost" href="#/dashboard">Back to kitchen desk</a></div></section>`}
-function renderForm(id){const a=author();if(!a){location.hash='#/sign-in';return}const r=id?recipes.find(x=>String(x.id)===String(id)):null;if(id&&(!r||!canEdit(r))){$('#app').innerHTML='<section class="page empty"><h3>You cannot edit this recipe</h3><p>Only its original contributor can edit it.</p><a href="#/" class="btn ghost">Back to recipes</a></section>';return}const edit=!!r;const val=(key,fallback='')=>escapeHTML(r?.[key]??fallback);$('#app').innerHTML=`<section class="page"><div class="form-shell"><div class="crumb"><a href="#/">All recipes</a><span class="slash">/</span>${edit?'Edit recipe':'New recipe'}</div><div class="section-kicker">${edit?'Improve a favorite':'Share something delicious'}</div><h1 class="form-heading">${edit?'Edit your recipe.':'Add to the table.'}</h1><p class="form-copy">${edit?'Make your changes and save.':'Fill in your dish once; everyone can discover it.'} Publishing as <strong class="accent-text">${escapeHTML(a.name)}</strong>.</p><form id="recipe-form" class="form-panel"><div class="field"><label for="title">Recipe name *</label><input id="title" name="title" required maxlength="100" placeholder="Grandma’s weekend curry" value="${val('title')}"></div><div class="form-grid"><div class="field"><label for="category">Category</label><select id="category" name="category">${['Breakfast','Lunch','Dinner','Sides','Dessert','Snacks','Drinks','Other'].map(s=>`<option ${r?.category===s?'selected':''}>${s}</option>`).join('')}</select></div><div class="field"><label for="servings">Servings *</label><input id="servings" name="servings" type="number" min="1" max="100" required value="${val('servings',2)}"></div></div><div class="field"><label for="description">Short description</label><textarea id="description" name="description" maxlength="400" rows="3" placeholder="What makes this dish special?">${val('description')}</textarea></div><div class="form-grid"><div class="field"><label for="prep">Preparation time (minutes)</label><input id="prep" name="prep" type="number" min="0" max="9999" required value="${val('prep_minutes',15)}"></div><div class="field"><label for="cook">Cooking time (minutes)</label><input id="cook" name="cook" type="number" min="0" max="9999" required value="${val('cook_minutes',20)}"></div></div><div class="field"><label for="ingredients">Ingredients *</label><textarea id="ingredients" name="ingredients" required rows="6" placeholder="2 tbsp olive oil&#10;1 onion, diced&#10;200 g tomatoes">${escapeHTML((r?.ingredients||[]).join('\n'))}</textarea><div class="hint">One ingredient per line. Quantities and units can go on the same line.</div></div><div class="field"><label for="steps">Cooking instructions *</label><textarea id="steps" name="steps" required rows="7" placeholder="Heat oil in a pan.&#10;Add onions and cook until soft.&#10;Stir in tomatoes and simmer.">${escapeHTML((r?.steps||[]).join('\n'))}</textarea><div class="hint">One step per line. The page numbers your steps automatically.</div></div>${!CONNECTED?`<div class="field"><label for="photo-file">Food photo (demo)</label><input id="photo-file" type="file" accept="image/png,image/jpeg,image/webp"/><div class="hint">Optional: JPG, PNG or WebP, under 750 KB. This photo stays on this browser.</div></div>`:""}<div class="field"><label for="image_url">Food photo URL</label><input id="image_url" name="image_url" type="url" placeholder="https://example.com/my-food.jpg" value="${val('image_url')&&!(r?.image_url||'').startsWith('data:')?val('image_url'):''}"><div class="hint">${CONNECTED?"Paste a public image URL. Direct image uploads will need Firebase Storage (Blaze plan).":"You can also paste a public photo URL. A demo upload takes priority."}</div></div><div class="form-actions"><button class="btn primary" id="save-button" type="submit">${edit?'Save changes':'Publish recipe'} ↗</button><a class="btn ghost" href="${edit?'#/recipe/'+encodeURIComponent(r.id):'#/'}">Cancel</a>${edit?'<button class="btn danger" type="button" id="delete-recipe">Delete recipe</button>':''}</div><div class="form-status" id="form-status" role="status"></div></form></div></section>`;$('#recipe-form').addEventListener('submit',e=>saveForm(e,r));if(edit)$('#delete-recipe').addEventListener('click',()=>deleteRecipe(r))}
+function renderNav(){
+ const a=author();renderLanguageSwitch();
+ $('#top-nav').innerHTML=`<a class="nav-text" href="#/">${t('allRecipes')}</a>${a?`
+ <a class="btn small primary" href="#/add">＋ ${t('addRecipe')}</a>
+ <a class="btn small ghost" href="#/manage">✎ ${t('editRecipe')}</a>
+ <a class="nav-text" href="#/dashboard">${escapeHTML(a.name)}</a>
+ <button type="button" class="btn small ghost" id="signout">${t('signOut')}</button>`:
+ `<a class="btn small ghost" href="#/sign-in">${t('signIn')}</a>`}`;
+ $('#mode-bar').innerHTML=`<div class="wrap"><span>${CONNECTED?`<strong>${t('sharedCookbook')}</strong> · ${t('sharedNotice')}`:`<strong>${t('localPreview')}</strong> · ${t('localNotice')}`}</span>${a?`<span>${t('signedInAs')} <strong>${escapeHTML(a.name)}</strong></span>`:''}</div>`;
+ const out=$('#signout');if(out)out.onclick=async()=>{if(CONNECTED){await fb.signOut(auth);user=null;contributor=null}else{activeDemo='';sessionStorage.removeItem('chefs-table-preview-user')}location.hash='#/';render()};
+}
+function homeListHtml(items){return items.map((r,i)=>{const v=localizedRecipe(r);return `<a class="index-name" href="#/recipe/${encodeURIComponent(r.id)}"><span class="ordinal">${String(i+1).padStart(2,'0')}</span><span class="name">${escapeHTML(v.title)}</span><span class="arrow">↗</span></a>`}).join('')||`<p class="muted">${t('noMatching')}</p>`}
+function homeCardsHtml(items){return items.map(r=>{const v=localizedRecipe(r);return `<a class="recipe-card" href="#/recipe/${encodeURIComponent(r.id)}"><div class="card-image">${imageTag(r)}<span class="category">${escapeHTML(r.is_builtin?t('starterRecipe'):categoryText(r.category))}</span></div><div class="card-body"><h4>${escapeHTML(v.title)}</h4><p>${escapeHTML(v.description||t('noDescription'))}</p><div class="card-meta"><span>${t('by')} ${escapeHTML(r.author_name||t('contributor'))}</span><span class="cook">◷ ${clock(r)} ${t('min')}</span></div></div></a>`}).join('')||`<div class="empty"><h3>${t('noFound')}</h3><p>${t('trySearch')}</p></div>`}
+function updateHomeLists(){const term=searchTerm.toLowerCase().trim();const list=recipes.filter(r=>{const v=localizedRecipe(r);return [r.title,v.title,r.category,categoryText(r.category),r.description,v.description,r.author_name,...(r.ingredients||[]),...(v.ingredients||[])].join(' ').toLowerCase().includes(term)});$('#index-names').innerHTML=homeListHtml(list);$('#recipe-cards').innerHTML=homeCardsHtml(list);$('#recipe-count').textContent=`${list.length} ${list.length===1?t('recipe'):t('recipes')}`}
+function renderHome(){
+ const a=author();
+ $('#app').innerHTML=`<section class="hero"><div class="hero-copy"><div class="overline">${t('sharedCollection')}</div><h1>${t('heroFirst')}<br><i>${t('heroBetter')}</i> ${t('heroTogether')}</h1><p>${t('heroCopy')}</p><div class="hero-line"><div><strong>${recipes.length}</strong><br>${t('collected')}</div><span>✳</span><div><strong>03</strong><br>${t('cooks')}</div></div></div><div class="hero-art"><img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1400&q=85" alt="${t('photoAlt')}"><div class="hero-stamp"><small>${t('madeToShare')}</small>${t('stamp')}</div></div></section>
+ ${a?`<section class="chef-desk"><div><span class="section-kicker">${t('yourDesk')}</span><h3>${t('welcomeBack')} ${escapeHTML(a.name)}.</h3><p>${t('deskIntro')}</p></div><div class="desk-buttons"><a href="#/add" class="btn primary">＋ ${t('addRecipe')}</a><a href="#/manage" class="btn ghost">✎ ${t('editRecipe')}</a></div></section>`:''}
+ <section class="intro-section" id="all-recipes"><div class="row-between"><div><div class="section-label">✳ ${t('indexLabel')}</div><h2 class="section-heading">${t('allOneTable')}</h2><p class="section-sub">${t('indexDescription')}</p></div><input type="search" class="search" id="search-recipe" placeholder="${t('searchPlaceholder')}" value="${escapeHTML(searchTerm)}" aria-label="${t('searchAria')}"></div><div class="index-box"><div class="index-top"><span>${t('directory')}</span><span id="recipe-count"></span></div><div id="index-names" class="name-index"></div></div></section><section class="collection"><div class="collection-head"><h3>${t('fromKitchen')}</h3><span class="count">${t('browsePhoto')}</span></div><div id="recipe-cards" class="card-grid"></div></section>`;
+ updateHomeLists();$('#search-recipe').addEventListener('input',e=>{searchTerm=e.target.value;updateHomeLists()});
+}
+function renderRecipe(id){
+ const r=recipes.find(x=>String(x.id)===String(id));
+ if(!r){$('#app').innerHTML=`<section class="page empty"><h3>${t('notFound')}</h3><p><a href="#/" class="accent-text">← ${t('backAll')}</a></p></section>`;return}
+ const v=localizedRecipe(r);
+ $('#app').innerHTML=`<section class="page"><div class="crumb"><a href="#/">${t('allRecipes')}</a><span class="slash">/</span>${escapeHTML(categoryText(r.category))}<span class="slash">/</span>${escapeHTML(v.title)}</div>
+ <div class="detail-top"><div class="detail-photo">${imageTag(r)}</div><div class="detail-info"><div class="overline">${escapeHTML(categoryText(r.category)||t('homeCooking'))}</div><h1 class="detail-title">${escapeHTML(v.title)}</h1><p class="detail-description">${escapeHTML(v.description||t('fromToYou'))}</p><div class="stats"><div><strong>${Number(r.prep_minutes)||0}m</strong><span>${t('prep')}</span></div><div><strong>${Number(r.cook_minutes)||0}m</strong><span>${t('cook')}</span></div><div><strong>${Number(r.servings)||1}</strong><span>${t('servings')}</span></div></div><div class="contributed">${t('recipeBy')} <strong>${escapeHTML(r.author_name||t('contributor'))}</strong></div><div class="detail-buttons"><button class="btn ghost" id="print-recipe">↗ ${t('print')}</button>${canEdit(r)?`<a class="btn primary" href="#/edit/${encodeURIComponent(r.id)}">✎ ${t('editYours')}</a>`:''}</div></div></div>
+ ${r.is_builtin?`<div class="note-box" role="note"><strong>${t('starterRecipe')}.</strong> ${t('starterNote')}</div>`:''}
+ ${v.needsTranslation?`<div class="note-box" role="note">${t('notTranslated')}</div>`:''}
+ <div class="detail-bottom"><div><div class="section-kicker">${t('gather')}</div><h2 class="block-title">${t('ingredients')} <small id="done-count" class="muted" style="font:12px var(--sans)"></small></h2><ul class="ingredients-list">${(v.ingredients||[]).map(x=>`<li><label class="ingredient"><input type="checkbox" class="ingredient-check"><span>${escapeHTML(x)}</span></label></li>`).join('')}</ul><div class="note-box"><strong>${t('kitchenNote')}</strong> ${t('checkNote')}</div></div><div><div class="section-kicker">${t('goodPart')}</div><h2 class="block-title">${t('howTo')}</h2><ol class="steps">${(v.steps||[]).map((x,i)=>`<li class="step"><span class="step-num">${String(i+1).padStart(2,'0')}</span><span class="step-text">${escapeHTML(x)}</span></li>`).join('')}</ol></div></div></section>`;
+ $('#print-recipe').onclick=()=>window.print();const checks=[...document.querySelectorAll('.ingredient-check')];checks.forEach(ch=>ch.addEventListener('change',()=>{$('#done-count').textContent=`${checks.filter(x=>x.checked).length}/${checks.length} ${t('ready')}`}));
+}
+function renderDashboard(){const a=author();if(!a){location.hash='#/sign-in';return}$('#app').innerHTML=`<section class="chef-dashboard"><div class="crumb"><a href="#/">${t('allRecipes')}</a><span class="slash">/</span>${t('dashboard')}</div><div class="section-kicker">${t('signedInKitchen')}</div><h1>${t('welcome')} ${escapeHTML(a.name)}.</h1><p>${t('dashboardCopy')}</p><div class="desk-grid"><a class="desk-tile" href="#/add"><span class="desk-icon">＋</span><strong>${t('addRecipe')}</strong><span>${t('addDesc')}</span></a><a class="desk-tile" href="#/manage"><span class="desk-icon">✎</span><strong>${t('editRecipe')}</strong><span>${t('editDesc')}</span></a></div><p class="notice">${CONNECTED?t('liveNote'):t('demoNote')}</p></section>`}
+function renderManage(){const a=author();if(!a){location.hash='#/sign-in';return}const mine=recipes.filter(canEdit);$('#app').innerHTML=`<section class="chef-dashboard"><div class="crumb"><a href="#/dashboard">${t('dashboard')}</a><span class="slash">/</span>${t('editRecipe')}</div><div class="section-kicker">${t('yourContrib')}</div><h1>${t('editHeading')}</h1><p>${t('editInstructions')}</p><div class="my-recipe-list">${mine.length?mine.map(r=>{const v=localizedRecipe(r);return `<div class="my-recipe"><div><strong>${escapeHTML(v.title)}</strong><small>${escapeHTML(categoryText(r.category))} · ${clock(r)} ${t('min')}</small></div><div class="desk-buttons"><a class="btn small ghost" href="#/recipe/${encodeURIComponent(r.id)}">${t('view')}</a><a class="btn small primary" href="#/edit/${encodeURIComponent(r.id)}">✎ ${t('edit')}</a></div></div>`}).join(''):`<p class="notice">${t('noOwn')}</p>`}</div><div class="auth-actions"><a class="btn primary" href="#/add">＋ ${t('addRecipe')}</a><a class="btn ghost" href="#/dashboard">${t('backDesk')}</a></div></section>`}
+function renderForm(id){
+ const a=author();if(!a){location.hash='#/sign-in';return}
+ const r=id?recipes.find(x=>String(x.id)===String(id)):null;
+ if(id&&(!r||!canEdit(r))){$('#app').innerHTML=`<section class="page empty"><h3>${t('cantEdit')}</h3><p>${t('onlyOriginal')}</p><a href="#/" class="btn ghost">${t('backAll')}</a></section>`;return}
+ const edit=!!r;const val=(key,fallback='')=>escapeHTML(r?.[key]??fallback);const lines=key=>escapeHTML((r?.[key]||[]).join('\n'));
+ const opts=['Breakfast','Lunch','Dinner','Sides','Dessert','Snacks','Drinks','Other'];
+ $('#app').innerHTML=`<section class="page"><div class="form-shell"><div class="crumb"><a href="#/">${t('allRecipes')}</a><span class="slash">/</span>${edit?t('editRecipe'):t('newRecipe')}</div><div class="section-kicker">${edit?t('improve'):t('shareDelicious')}</div><h1 class="form-heading">${edit?t('editYour'):t('addTable')}</h1><p class="form-copy">${edit?t('editFormCopy'):t('addFormCopy')} ${t('publishingAs')} <strong class="accent-text">${escapeHTML(a.name)}</strong>.</p>
+ <form id="recipe-form" class="form-panel"><div class="section-kicker form-group-title">${t('englishFields')}</div>
+ <div class="field"><label for="title">${t('recipeName')}</label><input id="title" name="title" required maxlength="100" placeholder="${t('placeholderTitle')}" value="${val('title')}"></div>
+ <div class="form-grid"><div class="field"><label for="category">${t('category')}</label><select id="category" name="category">${opts.map(s=>`<option value="${s}" ${r?.category===s?'selected':''}>${categoryText(s)}</option>`).join('')}</select></div><div class="field"><label for="servings">${t('servings')} *</label><input id="servings" name="servings" type="number" min="1" max="100" required value="${val('servings',2)}"></div></div>
+ <div class="field"><label for="description">${t('shortDescription')}</label><textarea id="description" name="description" maxlength="400" rows="3" placeholder="${t('placeholderDesc')}">${val('description')}</textarea></div>
+ <div class="form-grid"><div class="field"><label for="prep">${t('prepMinutes')}</label><input id="prep" name="prep" type="number" min="0" max="9999" required value="${val('prep_minutes',15)}"></div><div class="field"><label for="cook">${t('cookMinutes')}</label><input id="cook" name="cook" type="number" min="0" max="9999" required value="${val('cook_minutes',20)}"></div></div>
+ <div class="field"><label for="ingredients">${t('ingredientsRequired')}</label><textarea id="ingredients" name="ingredients" required rows="6" placeholder="${escapeHTML(t('placeholderIng'))}">${lines('ingredients')}</textarea><div class="hint">${t('ingredientsHint')}</div></div>
+ <div class="field"><label for="steps">${t('stepsRequired')}</label><textarea id="steps" name="steps" required rows="7" placeholder="${escapeHTML(t('placeholderSteps'))}">${lines('steps')}</textarea><div class="hint">${t('stepsHint')}</div></div>
+ <div class="translation-fields"><div class="section-kicker">${t('odiaFields')}</div><p class="hint">${t('odiaHelp')}</p>
+ <div class="field"><label for="title_or">${t('titleOdia')}</label><input id="title_or" name="title_or" lang="or" maxlength="100" value="${val('title_or',SAMPLE_ODIA[r?.id]?.title||'')}"></div>
+ <div class="field"><label for="description_or">${t('descriptionOdia')}</label><textarea id="description_or" name="description_or" lang="or" maxlength="400" rows="3">${val('description_or',SAMPLE_ODIA[r?.id]?.description||'')}</textarea></div>
+ <div class="field"><label for="ingredients_or">${t('ingredientsOdia')}</label><textarea id="ingredients_or" name="ingredients_or" lang="or" rows="5">${r?.ingredients_or?.length?lines('ingredients_or'):escapeHTML((SAMPLE_ODIA[r?.id]?.ingredients||[]).join('\n'))}</textarea><div class="hint">${t('odiaLineHint')}</div></div>
+ <div class="field"><label for="steps_or">${t('stepsOdia')}</label><textarea id="steps_or" name="steps_or" lang="or" rows="6">${r?.steps_or?.length?lines('steps_or'):escapeHTML((SAMPLE_ODIA[r?.id]?.steps||[]).join('\n'))}</textarea><div class="hint">${t('odiaLineHint')}</div></div>
+ </div>
+ ${!CONNECTED?`<div class="field"><label for="photo-file">${t('photoDemo')}</label><input id="photo-file" type="file" accept="image/png,image/jpeg,image/webp"/><div class="hint">${t('photoDemoHint')}</div></div>`:''}
+ <div class="field"><label for="image_url">${t('photoURL')}</label><input id="image_url" name="image_url" type="url" placeholder="https://example.com/my-food.jpg" value="${val('image_url')&&!(r?.image_url||'').startsWith('data:')?val('image_url'):''}"><div class="hint">${CONNECTED?t('photoHintLive'):t('photoHintDemo')}</div></div>
+ <div class="form-actions"><button class="btn primary" id="save-button" type="submit">${edit?t('saveChanges'):t('publish')} ↗</button><a class="btn ghost" href="${edit?'#/recipe/'+encodeURIComponent(r.id):'#/'}">${t('cancel')}</a>${edit?`<button class="btn danger" type="button" id="delete-recipe">${t('delete')}</button>`:''}</div><div class="form-status" id="form-status" role="status"></div></form></div></section>`;
+ $('#recipe-form').addEventListener('submit',e=>saveForm(e,r));if(edit)$('#delete-recipe').addEventListener('click',()=>deleteRecipe(r));
+}
 function readFileData(file){return new Promise((resolve,reject)=>{const fr=new FileReader();fr.onload=()=>resolve(fr.result);fr.onerror=()=>reject(new Error('Unable to read photo'));fr.readAsDataURL(file)})}
 async function uploadPhoto(file){const types={'image/jpeg':'jpg','image/png':'png','image/webp':'webp'};if(!types[file.type])throw Error('Choose a JPG, PNG or WebP photo.');if(CONNECTED)throw Error('For now, please use a public food photo URL. Cloud uploads require Firebase Storage.');if(file.size>750_000)throw Error('In demo mode choose a photo smaller than 750 KB.');return await readFileData(file)}
-async function saveForm(e,existing){e.preventDefault();const button=$('#save-button');button.disabled=true;$('#form-status').textContent='Saving your recipe…';try{const fd=new FormData(e.currentTarget);const ingredients=String(fd.get('ingredients')).split('\n').map(s=>s.trim()).filter(Boolean);const steps=String(fd.get('steps')).split('\n').map(s=>s.trim()).filter(Boolean);if(!ingredients.length||!steps.length)throw Error('Add at least one ingredient and one step.');if(ingredients.length>100||steps.length>60)throw Error('Please keep to 100 ingredients and 60 steps at most.');const link=String(fd.get('image_url')||'').trim();if(link&&!/^https?:\/\//i.test(link))throw Error('Photo link must begin with https:// or http://.');let photo=existing?.image_url||'';if(link)photo=link;const file=$('#photo-file')?.files?.[0];if(file)photo=await uploadPhoto(file);const a=author();const entry={title:String(fd.get('title')).trim(),description:String(fd.get('description')||'').trim(),category:String(fd.get('category')),servings:Number(fd.get('servings')),prep_minutes:Number(fd.get('prep')),cook_minutes:Number(fd.get('cook')),ingredients,steps,image_url:photo,author_id:a.id,author_name:a.name,author_email:CONNECTED?user.email:null};if(!entry.title)throw Error('Please enter a recipe name.');let id=existing?.id;if(CONNECTED){if(existing){await fb.updateDoc(fb.doc(db,'recipes',String(existing.id)),{...entry,updated_at:new Date().toISOString()});}else{id=crypto.randomUUID();await fb.setDoc(fb.doc(db,'recipes',id),{...entry,created_at:new Date().toISOString()});}await refreshRecipes()}else{if(existing){recipes=recipes.map(r=>r.id===id?{...r,...entry}:r)}else{id=crypto.randomUUID();recipes.unshift({id,...entry,created_at:new Date().toISOString()})}if(!demoSave())throw Error('Unable to save locally — browser storage full.')}notify(existing?'Recipe updated!':'Recipe published!');location.hash='#/recipe/'+encodeURIComponent(id);render()}catch(err){$('#form-status').textContent=err.message||'Unable to save recipe';button.disabled=false}}
-async function deleteRecipe(r){if(!canEdit(r))return;if(!window.confirm(`Delete “${r.title}”? This cannot be undone.`))return;try{if(CONNECTED){await fb.deleteDoc(fb.doc(db,'recipes',String(r.id)));await refreshRecipes()}else{recipes=recipes.filter(x=>x.id!==r.id);demoSave()}notify('Recipe deleted');location.hash='#/';render()}catch(e){notify(e.message)}}
-function renderSignIn(){if(author()){location.hash='#/dashboard';return;}if(!CONNECTED){$('#app').innerHTML=`<div class="auth-card"><div class="section-kicker">Try the contributor view</div><h1>Welcome, chef.</h1><p>This is a local preview. Choose a demo chef to open the signed-in Add Recipe and Edit Recipe buttons. This does not authenticate a real user.</p><div class="auth-actions">${DEMO_CHEFS.map(c=>`<button class="btn primary demo-signin" data-chef="${c.id}">Sign in as ${c.name}</button>`).join('')}</div><p class="notice">Live access will be restricted to your three approved email addresses by Firebase Security Rules.</p></div>`;document.querySelectorAll('.demo-signin').forEach(b=>b.onclick=()=>{activeDemo=b.dataset.chef;sessionStorage.setItem('chefs-table-preview-user',activeDemo);location.hash='#/dashboard';render();});return;}const signedIn=!!user;$('#app').innerHTML=`<div class="auth-card"><div class="section-kicker">Three approved contributors</div><h1>${signedIn?'Account status':'Welcome, chef.'}</h1><p>Sign in with one of the three approved email addresses. Readers never need an account.</p>${signedIn?`<p class="notice warning">Signed in as ${escapeHTML(user.email||'Unknown account')}, but editing is unavailable. ${!user.emailVerified?'Verify your email, then sign out and sign back in.':'This email is not on the three-person contributor list.'}</p>${!user.emailVerified?'<button id="verify-email" class="btn primary" type="button">Send verification email</button>':''}<button id="login-signout" class="btn ghost" type="button">Sign out</button>`:`<div class="auth-actions"><button class="btn primary" id="google-login">Sign in with Google</button></div><div class="auth-options"><div class="section-kicker">Or use email and password</div><form id="login-form"><div class="field"><label for="login-email">Approved email address</label><input id="login-email" type="email" autocomplete="email" required placeholder="chef@example.com"></div><div class="field"><label for="login-password">Password</label><input id="login-password" type="password" autocomplete="current-password" required placeholder="Your Firebase password"></div><button class="btn ghost" id="email-login" type="submit">Sign In</button></form></div>`}<p class="form-status" id="login-message" role="status"></p></div>`;const message=$('#login-message');if(signedIn){$('#verify-email')?.addEventListener('click',async()=>{try{await fb.sendEmailVerification(user);message.textContent='Verification email sent. Check your inbox.'}catch(err){message.textContent=err.message}});$('#login-signout').onclick=async()=>{await fb.signOut(auth);location.hash='#/sign-in';render()};return;}$('#google-login').onclick=async()=>{const btn=$('#google-login');btn.disabled=true;try{await fb.signInWithPopup(auth,new fb.GoogleAuthProvider());location.hash=author()?'#/dashboard':'#/sign-in';render();}catch(err){message.textContent=err.message}finally{btn.disabled=false}};$('#login-form').onsubmit=async e=>{e.preventDefault();const btn=$('#email-login');btn.disabled=true;try{await fb.signInWithEmailAndPassword(auth,$('#login-email').value.trim(),$('#login-password').value);location.hash=author()?'#/dashboard':'#/sign-in';render();}catch(err){message.textContent=err.message}finally{btn.disabled=false}};}
+async function saveForm(e,existing){e.preventDefault();const button=$('#save-button');button.disabled=true;$('#form-status').textContent=t('saving');try{const fd=new FormData(e.currentTarget);const ingredients=String(fd.get('ingredients')).split('\n').map(s=>s.trim()).filter(Boolean);const steps=String(fd.get('steps')).split('\n').map(s=>s.trim()).filter(Boolean);if(!ingredients.length||!steps.length)throw Error(t('errorItemRequired'));if(ingredients.length>100||steps.length>60)throw Error(t('errorTooMany'));const link=String(fd.get('image_url')||'').trim();if(link&&!/^https?:\/\//i.test(link))throw Error(t('errorPhoto'));let photo=existing?.image_url||'';if(link)photo=link;const file=$('#photo-file')?.files?.[0];if(file)photo=await uploadPhoto(file);const a=author();const orLines=k=>String(fd.get(k)||'').split('\n').map(s=>s.trim()).filter(Boolean);const entry={title_or:String(fd.get('title_or')||'').trim(),description_or:String(fd.get('description_or')||'').trim(),ingredients_or:orLines('ingredients_or'),steps_or:orLines('steps_or'),title:String(fd.get('title')).trim(),description:String(fd.get('description')||'').trim(),category:String(fd.get('category')),servings:Number(fd.get('servings')),prep_minutes:Number(fd.get('prep')),cook_minutes:Number(fd.get('cook')),ingredients,steps,image_url:photo,author_id:a.id,author_name:a.name,author_email:CONNECTED?user.email:null};if(!entry.title)throw Error(t('errorRecipeName'));let id=existing?.id;if(CONNECTED){if(existing){await fb.updateDoc(fb.doc(db,'recipes',String(existing.id)),{...entry,updated_at:new Date().toISOString()});}else{id=crypto.randomUUID();await fb.setDoc(fb.doc(db,'recipes',id),{...entry,created_at:new Date().toISOString()});}await refreshRecipes()}else{if(existing){recipes=recipes.map(r=>r.id===id?{...r,...entry}:r)}else{id=crypto.randomUUID();recipes.unshift({id,...entry,created_at:new Date().toISOString()})}if(!demoSave())throw Error(t('errorStorage'))}notify(existing?t('saved'):t('published'));location.hash='#/recipe/'+encodeURIComponent(id);render()}catch(err){$('#form-status').textContent=err.message||t('errorSave');button.disabled=false}}
+async function deleteRecipe(r){if(!canEdit(r))return;if(!window.confirm(`${t('deleteConfirm')} — ${r.title}`))return;try{if(CONNECTED){await fb.deleteDoc(fb.doc(db,'recipes',String(r.id)));await refreshRecipes()}else{recipes=recipes.filter(x=>x.id!==r.id);demoSave()}notify(t('deleted'));location.hash='#/';render()}catch(e){notify(e.message)}}
+function renderSignIn(){
+ if(author()){location.hash='#/dashboard';return}
+ if(!CONNECTED){$('#app').innerHTML=`<div class="auth-card"><div class="section-kicker">${t('tryContributor')}</div><h1>${t('welcomeChef')}</h1><p>${t('previewMessage')}</p><div class="auth-actions">${DEMO_CHEFS.map(c=>`<button class="btn primary demo-signin" data-chef="${c.id}">${t('signAs')} ${escapeHTML(c.name)}</button>`).join('')}</div><p class="notice">${t('liveRestriction')}</p></div>`;document.querySelectorAll('.demo-signin').forEach(b=>b.onclick=()=>{activeDemo=b.dataset.chef;sessionStorage.setItem('chefs-table-preview-user',activeDemo);location.hash='#/dashboard';render()});return}
+ const signedIn=!!user;
+ $('#app').innerHTML=`<div class="auth-card"><div class="section-kicker">${t('threeContributors')}</div><h1>${signedIn?t('accountStatus'):t('welcomeChef')}</h1><p>${t('signInDesc')}</p>${signedIn?`<p class="notice warning">${t('signedAs')} ${escapeHTML(user.email||'Unknown account')}, ${t('editingUnavailable')} ${!user.emailVerified?t('verifyInstruction'):t('notApproved')}</p>${!user.emailVerified?`<button id="verify-email" class="btn primary" type="button">${t('sendVerify')}</button>`:''}<button id="login-signout" class="btn ghost" type="button">${t('signOut')}</button>`:`<div class="auth-actions"><button class="btn primary" id="google-login">${t('googleSignIn')}</button></div><div class="auth-options"><div class="section-kicker">${t('emailPassword')}</div><form id="login-form"><div class="field"><label for="login-email">${t('emailAddress')}</label><input id="login-email" type="email" autocomplete="email" required placeholder="chef@example.com"></div><div class="field"><label for="login-password">${t('password')}</label><input id="login-password" type="password" autocomplete="current-password" required placeholder="${t('firebasePassword')}"></div><button class="btn ghost" id="email-login" type="submit">${t('signInButton')}</button></form></div>`}<p class="form-status" id="login-message" role="status"></p></div>`;
+ const message=$('#login-message');
+ if(signedIn){$('#verify-email')?.addEventListener('click',async()=>{try{await fb.sendEmailVerification(user);message.textContent=t('verifySent')}catch(err){message.textContent=err.message}});$('#login-signout').onclick=async()=>{await fb.signOut(auth);location.hash='#/sign-in';render()};return}
+ $('#google-login').onclick=async()=>{const btn=$('#google-login');btn.disabled=true;try{await fb.signInWithPopup(auth,new fb.GoogleAuthProvider());location.hash=author()?'#/dashboard':'#/sign-in';render()}catch(err){message.textContent=err.message}finally{btn.disabled=false}};
+ $('#login-form').onsubmit=async e=>{e.preventDefault();const btn=$('#email-login');btn.disabled=true;try{await fb.signInWithEmailAndPassword(auth,$('#login-email').value.trim(),$('#login-password').value);location.hash=author()?'#/dashboard':'#/sign-in';render()}catch(err){message.textContent=err.message}finally{btn.disabled=false}};
+}
 window.addEventListener('hashchange',()=>{render();window.scrollTo(0,0)});
 init();
 </script>
