@@ -181,6 +181,8 @@ async function init(){
   fb={...authMod,...storeMod};const app=appMod.initializeApp(firebaseConfig);
 
   auth=fb.getAuth(app);db=fb.getFirestore(app);
+  // Keep sign-in only for the current browser session.
+  await fb.setPersistence(auth, fb.browserSessionPersistence);
 
   fb.onAuthStateChanged(auth, u=>{user=u;refreshContributor();render()});
 
